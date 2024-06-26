@@ -7,43 +7,34 @@ from typing import Tuple, Optional, Any
 DATABASE = 'geographic.db'
 
 def drop(table:str)->sqlite3.Cursor:
-	return request(f"DROP TABLE IF EXISTS {table};")
+	return request(f"DROP TABLE IF EXISTS {table};", False)
 	
 
 def create(table:str, columns:str)->sqlite3.Cursor:
 	drop(table)
-	return request(f"CREATE TABLE {table} ({columns})")
+	return request(f"CREATE TABLE {table} ({columns})", False)
 	
 	
 def insert(table:str, values:Tuple[Any])->sqlite3.Cursor:
-	return request(f"INSERT INTO {table} VALUES {values}")
+	return request(f"INSERT INTO {table} VALUES {values}", False)
 	
 	
 def delete(table:str, condition:str)->sqlite3.Cursor:
-	return request(f"DELETE FROM {table} WHERE {condition}")
+	return request(f"DELETE FROM {table} WHERE {condition}", False)
 
 
 def select(table:str, value:str)->sqlite3.Cursor:
-	return request(value)
-	"""
-	db = sqlite3.connect(DATABASE)
-	cursor = db.cursor()
-	rows = cursor.execute(request)
-	print("\n\n")
-	for row in cursor.execute(f"SELECT * FROM {TABLE}"):
-		print(row)
-	db.commit()
-	db.close()
-	"""
+	return request(value, True)
+	
 
-def request(value:str)->sqlite3.Cursor:
+def request(value:str, verbose:bool)->sqlite3.Cursor:
 	db = sqlite3.connect(DATABASE)
 	cursor = db.cursor()
 	
 	rows = cursor.execute(value)
-	print("\n\n")
-	for row in rows:
-		print(row)
+	if verbose:
+		for row in rows:
+			print(f"\n{row}")
 	
 	db.commit()
 	db.close()

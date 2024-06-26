@@ -9,6 +9,7 @@ from typing import Tuple, Union
 # pip install googlesearch-python
 
 LANGUAGE = "eng"
+R = 6371 # radius of Earth 
 
 class Location:
 	""" Class containing informations about a location. """
@@ -21,7 +22,6 @@ class Location:
 	
 	def CoordSphere(self, delta:float, phi:float)->Tuple[float]:
 		""" Function to compute spherical coordinates of a point. """
-		R = 6371
 		radian = lambda degree: degree * math.pi / 180
 		
 		delta, phi = (radian(delta), radian(phi))
@@ -48,24 +48,39 @@ def euclidean(x:Tuple[float], y:Tuple[float])->float:
 	return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
 	
 	
+	
+########################################################################################
+import csv
+
+def nearest(x:str, radius:float)->Tuple[float]:
+	addr, latitude, longitude = coordinates(x)
+	loc1 = Location(addr, latitude, longitude)
+	
+	const = (R**2 - (radius**2 - (loc1.x**2+loc1.y**2+loc1.z**2))) / (2*R)
+	return (loc1.x, loc1.y, loc1.z, const)
+
+
+# https://stackoverflow.com/questions/7783684/select-coordinates-which-fall-within-a-radius-of-a-central-point
+
 if __name__ == "__main__":
 	
 	addr1 = "36 rue de la Prairie Saint Genis-Pouilly"
-	addr2 = "162 Rue du Vieux Bourg, Ségny"
+	radius = 10 # radius of 10 km
 	
-	addr, latitude, longitude = coordinates(addr1)
-	loc1 = Location(addr, latitude, longitude)
-	print(f"\n{loc1.addr}")
-	print(f"Latitude={loc1.latitud}")
-	print(f"Longitude={loc1.longitud}")
-	
-	
-	addr, latitude, longitude = coordinates(addr2)
-	loc2 = Location(addr, latitude, longitude)
-	print(f"\n{loc2.addr}")
-	print(f"Latitude={loc2.latitud}")
-	print(f"Longitude={loc2.longitud}")
+	x1, y1, z1, const = nearest(addr1, radius)
 
-	x = euclidean((loc1.x, loc1.y, loc1.z), (loc2.x, loc2.y, loc2.z))
-	print(f"\nEuclidean: {x}")
+	filename = "Ain/Ain.csv"
+	with open(filename, encoding='utf-8') as f:
+		reader = csv.reader(f, delimiter=';')
+		for row in reader:
+			loc2 = Location(row[0], float(row[1]), float(row[2]))
+			print(f"\n\n{row[0]} \n{float(row[1])}, {float(row[2])}")
+			
+			
+			res = x1*math.cos(loc2.latitud* math.pi / 180)*math.cos(loc2.longitud* math.pi / 180) + y1*math.cos(loc2.latitud* math.pi / 180)*math.sin(loc2.longitud* math.pi / 180) + z1*math.sin(loc2.latitud* math.pi / 180)# formula - SQL
+	
+			dist = euclidean((loc1.x, loc1.y, loc1.z), (loc2.x, loc2.y, loc2.z))
+	
+			print(f"Euclidean: {dist}, {const} < {res}  {const < res}")
+			input()
 	

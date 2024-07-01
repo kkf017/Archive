@@ -48,11 +48,8 @@ def euclidean(x:Tuple[float], y:Tuple[float])->float:
 	return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
 	
 	
-	
-########################################################################################
-import csv
-
 def nearest(x:str, radius:float)->Tuple[float]:
+	""" Function to compute .... """
 	addr, latitude, longitude = coordinates(x)
 	loc1 = Location(addr, latitude, longitude)
 	
@@ -69,6 +66,7 @@ if __name__ == "__main__":
 	
 	x1, y1, z1, const = nearest(addr1, radius)
 
+	"""
 	filename = "Ain/Ain.csv"
 	with open(filename, encoding='utf-8') as f:
 		reader = csv.reader(f, delimiter=';')
@@ -83,4 +81,4 @@ if __name__ == "__main__":
 	
 			print(f"Euclidean: {dist}, {const} < {res}  {const < res}")
 			input()
-	
+	"""

@@ -1,7 +1,7 @@
 import os
 import flask
 
-PATH = "/home/ksys/Documents/Geographic" # path of your app
+PATH = "/home/kkf/Repositories/Archive/Project3" # path of your app
 
 
 IMG_ALLOWED = {'png', 'jpg', 'jpeg', 'JPG'}#'JPG', 'gif'}

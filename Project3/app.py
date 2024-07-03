@@ -21,7 +21,7 @@ def home()->str:
 def search()->str:
 	if flask.request.method == 'POST':	
 		x = flask.request.form["search-radius"]
-		text = flask.request.form["searchAddr"]
+		text = flask.request.form["search-addr"]
 		print(text, x)
 		# check if place exist
 		# if not text exist:

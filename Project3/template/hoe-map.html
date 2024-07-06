@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>W3.CSS Template</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../static/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	
+	<!-- Wittgenstein, Bitter, Satisfy, Merienda -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wittgenstein">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<style>
+	body,h1,h2,h3,h4,h5,h6 {font-family: "Wittgenstein", sans-serif}
+	.w3-bar,h1,button {font-family: "Merienda", sans-serif}
+	.fa-anchor,.fa-coffee {font-size:200px}
+	
+	
+	header{
+		  background-image: url('../static/img/books-on-grass-2.jpg');
+		   background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: cover; /*100% 100%;
+		}
+	</style>
+	
+	
+	    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5dc67e4a2d7bd39c396c0f02eeb476f3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+</head>
+
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-light-grey w3-card w3-left-align w3-medium">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-purple w3-medium" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    
+    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-pink">Home</a>
+
+    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-right w3-text-black"><i class=""></i>Login</b></a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">START PAGE</h1>
+  <p class="w3-xlarge">Template by w3.css</p>
+  
+  <form action="/search/" enctype="multipart/form-data" method="post">
+      <div class="w3-row w3-section">
+            <div class="w3-rest" align = "center">
+                <input class="w3-border" name="search-addr" type="text" id="search-addr" placeholder="Address" style="height:35px;width: 425px">
+           
+            
+             <select class="w3-select w3-border w3-white" name="search-radius" id="search-radius" style="padding:128px height:25px;width: 65px">
+	    <option value="10">10 km</option>
+	    <option value="20">20 km</option>
+	    <option value="30">30 km</option>
+	    <option value="30">50 km</option>
+	  </select>
+            </div>
+        </div>
+  
+  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Search</button>
+  
+  </form>
+</header>
+
+
+<!---------------------------------------------------------------------------------------->
+
+ 
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+
+  <!-- Grid -->
+  <div class="w3-row w3-padding w3-border">
+ 
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12">
+    
+      <!-- Blog entry -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>TITLE HEADING</h3>
+          <h5>Title description, <span class="w3-opacity">May 2, 2016</span></h5>
+        </div>
+
+        <div class="w3-justify">
+          <!--<img src="../static/maps/map.html" alt="Girl Hat" style="width:100%" class="w3-padding-16">-->
+            <!--<img src="../static/maps/map.html" alt="Girl Hat" style="width:100%" class="w3-padding-16">-->
+          <!--<div w3-include-html="/home/ksys/Documents/Project3/static/maps/map.html"></div>-->
+          <!--<include src="map.html"></include>-->
+          <!--<iframe src="/home/ksys/Documents/Project3/static/maps/map.html"></iframe>-->
+
+          <p><strong>More Hats!</strong> I am crazy about hats these days. Some text about this blog entry. Fashion fashion and mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor
+            magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sedtellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+          <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo1')" id="myBtn"><b>Replies  </b> <span class="w3-tag w3-white">1</span></button></p>
+          <p class="w3-clear"></p>
+          <div class="w3-row w3-margin-bottom" id="demo1" style="display:none">
+            <hr>
+              <div class="w3-col l2 m3">
+                <img src="../static/img/redpanda.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4>George <span class="w3-opacity w3-medium">May 3, 2015, 6:32 PM</span></h4>
+                <p>Great blog post! Following</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+    <!-- END BLOG ENTRIES -->
+    
+          <!-- Posts -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Popular Posts</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Denim</span>
+            <br>
+            <span>Sed mattis nunc</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Sweaters</span>
+            <br>
+            <span>Praes tinci sed</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Workshop</span>
+            <br>
+            <span>Ultricies congue</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right w3-sepia" style="width:50px">
+            <span class="w3-large">Trends</span>
+            <br>
+            <span>Lorem ipsum dipsum</span>
+          </li>
+        </ul>
+      </div>
+      <hr>
+    </div>
+
+    <!-- About/Information menu -->
+    <div class="w3-col l4">
+      <!-- About Card -->
+      <div class="w3-white w3-margin">
+        <img src="../static/img/redpanda.jpg"  alt="Jane" style="width:100%" class="w3-grayscale">
+        <div class="w3-container w3-black">
+          <h4>My Name</h4>
+          <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Posts -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Popular Posts</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Denim</span>
+            <br>
+            <span>Sed mattis nunc</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Sweaters</span>
+            <br>
+            <span>Praes tinci sed</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Workshop</span>
+            <br>
+            <span>Ultricies congue</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../static/img/redpanda.jpg"  alt="Image" class="w3-left w3-margin-right w3-sepia" style="width:50px">
+            <span class="w3-large">Trends</span>
+            <br>
+            <span>Lorem ipsum dipsum</span>
+          </li>
+        </ul>
+      </div>
+      <hr>
+
+      <!-- Advertising -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Advertise</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <div class="w3-container w3-display-container w3-light-grey w3-section" style="height:200px">
+            <span class="w3-display-middle"> jsaflbg</span>     
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Tags -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Tags</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <p>
+            <span class="w3-tag w3-black w3-margin-bottom">Fashion</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+            <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Hats</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Norway</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sweaters</span>
+            <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Deals</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Accessories</span>
+            <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+            <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Jeans</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Trends</span>
+          </p>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Inspiration -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Inspiration</h4>
+        </div>
+        <div class="w3-row-padding w3-white">
+          <div class="w3-col s6">
+            <p><img src="../static/img/redpanda.jpg"  alt="Jeans" style="width:100%"></p>
+            <p><img src="../static/img/redpanda.jpg"  alt="Jeans" style="width:100%"></p>
+          </div>
+          <div class="w3-col s6">
+            <p><img src="../static/img/redpanda.jpg"  alt="Men in Hats" style="width:100%" class="w3-grayscale"></p>
+            <p><img src="../static/img/redpanda.jpg"  alt="Jeans" style="width:100%"></p>
+         </div>
+        </div>
+      </div>
+      <hr>
+
+
+      
+      <!-- Subscribe -->
+      <div class="w3-white w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Subscribe</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <p>Enter your e-mail below and get notified on the latest blog posts.</p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+          <p><button type="button" onclick="document.getElementById('subscribe').style.display='block'" class="w3-button w3-block w3-red">Subscribe</button></p>
+        </div>
+      </div>
+
+    <!-- END About/Intro Menu -->
+    </div>
+
+  <!-- END GRID -->
+  </div>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Subscribe Modal -->
+<div id="subscribe" class="w3-modal w3-animate-opacity">
+  <div class="w3-modal-content" style="padding:32px">
+    <div class="w3-container w3-white">
+      <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+      <h2 class="w3-wide">SUBSCRIBE</h2>
+      <p>Join my mailing list to receive updates on the latest blog posts and other things.</p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+      <button type="button" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!---------------------------------------------------------------------------------------->
+
+
+<div class="folium-map " id="map_5dc67e4a2d7bd39c396c0f02eeb476f3" style="max-width:1600px"></div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+</body>
+
+
+
+<script>
+    
+    
+            var map_5dc67e4a2d7bd39c396c0f02eeb476f3 = L.map(
+                "map_5dc67e4a2d7bd39c396c0f02eeb476f3",
+                {
+                    center: [46.263996, 6.029845731313132],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_776a7482d5d44dc59897b8c1342012b6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_776a7482d5d44dc59897b8c1342012b6.addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_e47703bb57d2ba9e1e7e5b536405cf7b = L.marker(
+                [46.2838474, 6.0858372],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_cd0cbc267cec0c8204ce47d3f3484c36 = L.marker(
+                [46.2764726, 6.0943786],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_1488c7d811621b87b9d147329da2ad1d = L.marker(
+                [46.27169189999999, 6.095952650374953],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_90316d95a76f7901dedebc3991995623 = L.marker(
+                [46.2706077, 6.100693],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_a6ca5427d316a88ddf931c75c1802d57 = L.marker(
+                [46.26696, 6.097865],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_3e6ea4a688cfc9313b7749be8b6001c0 = L.marker(
+                [46.2647609, 6.095296532772116],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+    
+            var marker_e374c9dc39d6473d9c6c81b389e0b16e = L.marker(
+                [46.296085, 6.072697],
+                {"fillColor": "#43d9de", "radius": 8}
+            ).addTo(map_5dc67e4a2d7bd39c396c0f02eeb476f3);
+        
+</script>
+</html>

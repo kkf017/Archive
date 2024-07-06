@@ -3,7 +3,6 @@ import sqlite3
 
 from typing import Tuple, Optional, Any
 
-# Add hash -  to database ->> TABLE: (Hash, Address, latitud, longitud)
 
 DATABASE = 'geographic.db'
 TABLE = "Location"
@@ -36,34 +35,26 @@ def request(value:str, verbose:bool)->sqlite3.Cursor:
 	rows = cursor.execute(value)
 	if verbose:
 		for row in rows:
-			print(f"\n{row}")
-	
+			print(f"\n{row}")	
 	db.commit()
 	db.close()
-	return rows
+	return rows	
+
 	
-	
-	
-	
-def populate(filename:str, name:str)->None:
-	with open(filename, encoding='utf-8') as f:
-		reader = csv.reader(f, delimiter=';')
-		for row in reader:
-			insert(name, (row[0], float(row[1]), float(row[2])))
-			
-			
+				
+		
 if __name__ == "__main__":
 	
 	table = "Location"
 	
-	drop(table)
-	create(table, "Address, Latitud, Longitud")
+	#drop(table)
+	#create(table, "Address, Latitud, Longitud")
+	#create(table,"Hash, Name, Address, Town, Municipality, Department, Region, Postcode, Country, Latitud, Longitud")
 
-	drop(table)
-	create(table, "Address, Latitud, Longitud")
-	populate("Ain/Ain.csv", table)
-	populate("Haute-Savoie/Haute-Savoie.csv", table)
 	
+	select(table, "SELECT DISTINCT Town FROM Location ORDER BY Town;")
+
+
 	"""
 	insert(table, ('Addr1', 100, 200.4))
 	select(table, f"SELECT * FROM {table}")

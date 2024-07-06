@@ -50,10 +50,9 @@ class Location:
 
 def coordinates(location:str)->Tuple[Union[str, float]]:
 	""" Function to get coordinates of a location. """
-	#https://stackoverflow.com/questions/11390392/return-individual-address-components-city-state-etc-from-geopy-geocoder
 	try:	
-		coder = geopy.geocoders.Nominatim(user_agent="GetLoc") #addressdetails=True
-		loc = coder.geocode(location, language=LANGUAGE)
+		coder = geopy.geocoders.Nominatim(user_agent="GetLoc")
+		loc = coder.geocode(location, language=LANGUAGE, addressdetails=True)
 	except geopy.exc.GeopyError: #geopy.exc.GeocoderTimedOut:
 		print("Error: geocode failed with message %s"%("geopy.exc.GeocoderTimedOut"))
 		loc = None
@@ -68,6 +67,7 @@ def euclidean(loc1:Location, loc2:Location)->float:
 	x1, y1, z1 = (loc1.x, loc1.y, loc1.z)
 	x2, y2, z2 = (loc2.x, loc2.y, loc2.z)
 	return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+
 
 
 

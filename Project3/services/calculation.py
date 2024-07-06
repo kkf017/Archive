@@ -7,19 +7,33 @@ from services.geography import Location, coordinates, euclidean
 from typing import List, Dict, Union
 
 
-# Revoir database :
-	#(Hash, address, commune, department, region, code postal, pays, latitude, longitude)
-			# ORDER BY ...
-
 def fill()->List[str]:
-	request = f"SELECT * FROM {TABLE}" # order by alphabetical order
+	request = f"SELECT * FROM {TABLE} ORDER BY Region,Department,Municipality,Town;"
 	
 	result = []
 	db = sqlite3.connect(DATABASE)
 	cursor = db.cursor()
 	rows = cursor.execute(request)
 	for row in rows:
-		result.append(row[0])
+		result.append(row[1])
+	db.commit()
+	db.close()
+	return result
+	
+	
+def filters(key:str, value:str)->List[str]:
+	print(key, value)	
+	request = f"SELECT * FROM {TABLE} WHERE {key}='{value}' ORDER BY Region,Department,Municipality,Town;"
+	
+	if key == None and value == None:
+		return []
+	
+	result = []
+	db = sqlite3.connect(DATABASE)
+	cursor = db.cursor()
+	rows = cursor.execute(request)
+	for row in rows:
+		result.append(row[1])
 	db.commit()
 	db.close()
 	return result
@@ -32,7 +46,7 @@ def sphere(location:str, radius:float)->Dict[str, List[Dict[str, Union[str, floa
 	
 	const = loc1.nearest(radius)
 	rad = math.pi / 180
-	request = f"SELECT * FROM {TABLE} a WHERE ( {const} <= {loc1.x} * cos(a.latitud * {rad}) * cos(a.longitud * {rad}) + {loc1.y} * cos(a.latitud * {rad}) * sin(a.longitud * {rad}) + {loc1.z} * sin(a.latitud * {rad})  )"
+	request = f"SELECT Name, Latitud, Longitud FROM {TABLE} a WHERE ( {const} <= {loc1.x} * cos(a.latitud * {rad}) * cos(a.longitud * {rad}) + {loc1.y} * cos(a.latitud * {rad}) * sin(a.longitud * {rad}) + {loc1.z} * sin(a.latitud * {rad}) )"
 	
 	result = []
 	db = sqlite3.connect(DATABASE)

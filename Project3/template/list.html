@@ -53,7 +53,7 @@
 
 
 <!-- Header -->
-<header class="w3-container w3-pink w3-center" style="padding:128px 16px">
+<header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">START PAGE</h1>
   <p class="w3-xlarge">Template by w3.css</p>
   
@@ -77,34 +77,87 @@
   </form>
 </header>
 
-<!---
-  <div class="w3-container">
-    <h3>Explore Nature</h3>
-    <h4 class="w3-opacity">kjlhvuzcirxtu</h4>
-    <h3></h3>
-  </div>
-  
-  <div class="w3-row-padding">
-   {% for obj in result %}
-    <div class="w3-third w3-margin-bottom" style="width:25%;height:315px">
-      <div class="w3-container w3-border w3-white">
-        <h4>{{ obj}}</h4>
-        <h6 class="w3-opacity"> km</h6>
-        <p></p>
-        <button class="w3-button w3-margin-bottom w3-yellow">Buy Tickets</button>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
- -->
  
 <!---------------------------------------------------------------------------------------->
 
-<div class="w3-container w3-light-grey w3-padding-64 w3-xxlarge" id="search-location">
-  <div class="w3-content">
+     <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">The PLACES</h1> 
+        
+     <form action="/filter/" enctype="multipart/form-data" method="post">
+      <div class="w3-row w3-section">
+            <div class="w3-rest" align = "center">          
+            
+             <select class="w3-select w3-border w3-white" name="filter-country" id="filter-country" style="padding:128px height:25px;width: 125px">
+             <option value="None">---</option>
+	    <option value="France">France</option>
+	  </select>
+	  
+	  
+             <select class="w3-select w3-border w3-white" name="filter-region" id="filter-region" style="padding:128px height:25px;width: 125px">
+	    <option value="None">---</option>
+	    <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+	    <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+	  </select>
+	  
+	  
+             <select class="w3-select w3-border w3-white" name="filter-department" id="filter-department" style="padding:128px height:25px;width: 125px">
+	    <option value="None">---</option>
+	    <option value="Ain">Ain</option>
+	    <option value="Haute-Savoie">Haute-Savoie</option>
+	    <option value="Nièvre">Nièvre</option>
+	  </select>
+	  
+	  
+	  
+             <!--<select class="w3-select w3-border w3-white" name="filter-municipality" id="filter-municipality" style="padding:128px height:25px;width: 65px">
+	    <option value="None">---</option>
+	    <option value="Annecy">Annecy</option>
+	    <option value="Belley">Belley</option>
+	    <option value="Bonneville">Bonneville</option>
+	    <option value="Bourg-en-Bresse">Bourg-en-Bresse</option>
+	    <option value="Cosne-Cours-sur-Loire">Cosne-Cours-sur-Loire</option>
+	    <option value="Gex">Gex</option>
+	    <option value="Nantua">Nantua</option>
+	    <option value="Saint-Julien-en-Genevois">Saint-Julien-en-Genevois</option>
+	    <option value="Thonon-les-Bains">Thonon-les-Bains</option>
+	  </select>-->
+	  
+	  
+             <select class="w3-select w3-border w3-white" name="filter-town" id="filter-town" style="padding:128px height:25px;width: 125px">
+	   <option value="None">---</option>
+	    <option value="Ambérieu-en-Bugey">Ambérieu-en-Bugey</option>
+	    <option value="Annemasse">Annemasse</option>
+	    <option value="Belley">Belley</option>
+	    <option value="Bonneville">Bonneville</option>
+	    <option value="Bourg-en-Bresse">Bourg-en-Bresse</option>
+	    <option value="Chamonix-Mont-Blanc">Chamonix-Mont-Blanc</option>
+	    <option value="Châtillon-sur-Chalaronne">Châtillon-sur-Chalaronne</option>
+	    <option value="Cluses">Cluses</option>
+	    <option value="La Roche-sur-Foron">La Roche-sur-Foron</option>
+	    <option value="Miribel">Miribel</option>
+	    <option value="Oyonnax">Oyonnax</option>
+	    <option value="Passy">Passy</option>
+	    <option value="Rumilly">Rumilly</option>
+	    <option value="Saint-Genis-Pouilly">Saint-Genis-Pouilly</option>
+	    <option value="Sallanches">Sallanches</option>
+	    <option value="Thonon-les-Bains">Thonon-les-Bains</option>
+	    <option value="Trévoux">Trévoux</option>
+	    <option value="Valserhône">Valserhône</option>
+	    <option value="Villars-les-Dombes">Villars-les-Dombes</option>
+	  </select>
+            </div>
+        </div>
+
+	<p align="center">
+  		<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Apply</button>
+  	</p>
   
-    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">The PLACES</h1>
-    
+  </form>
+
+
+
+<div class="w3-container w3-light-grey w3-padding-64 w3-xxlarge" id="search-location">
+  <div class="w3-content">    
+    <form action="/bookbox/" enctype="multipart/form-data" method="post">
      {% for obj in result %}
      <div class="w3-container w3-padding-32 w3-white">
       <span class="w3-right w3-tag w3-purple w3-round w3-medium"> km</span>
@@ -112,38 +165,13 @@
       <button class="w3-right w3-button w3-margin-bottom w3-small w3-dark-grey">Let's see ! >></button>      
       </div><br>
       {% endfor %}
-
+  </form>
   </div>
 </div>
 
 
 <!---------------------------------------------------------------------------------------->
  
-   <!--<div class="w3-container">
-    <h3>Explore Nature</h3>
-    <h4 class="w3-opacity">kjlhvuzcirxtu</h4>
-    <h3></h3>
-  </div>
-  
-  <div class="w3-row-padding">
-   {% for obj in result %}
- <div class="w3-card-4 w3-margin w3-white w3-threequarter">
-    <div class="w3-container">
-      <p>{{obj}}</p>
-      <div class="w3-row">
-		<div class="w3-col m8 s12">
-		  <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
-		</div>
-		<div class="w3-col m4 w3-hide-small">
-		  <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
-		</div>
-      </div>
-    </div>
-  </div>
-  <hr> 
-    {% endfor %}
-  </div> -->
-
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">  

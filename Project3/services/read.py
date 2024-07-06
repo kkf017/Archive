@@ -1,7 +1,15 @@
 import os
 import csv
+import hashlib
+import geopy
 
-from typing import Tuple, Union
+HASH = lambda x: (hashlib.sha1(x.encode())).hexdigest()
+
+from services.database import *
+
+from typing import Tuple, Dict, Union
+
+
 
 def readtxt(filename:str)->None:
 	""" Function to read a .txt file. """
@@ -15,12 +23,16 @@ def readtxt(filename:str)->None:
 		for line in f.readlines():
 			add(filename, line)
 
+
 def readCSV(filename:str)->None:
 	""" Function to read a .csv file. """
 	with open(filename, encoding='utf-8') as f:
 		reader = csv.reader(f, delimiter=';')
 		for row in reader:
-			print(f"\n\n{row[0]} \n{row[1]},{row[2]}")			
+			print(f"\n\n")
+			for i in range(len(row)):
+				print(f"{i} - {row[i]}")	
+		
 			
 def writeCSV(filename:str, *args:Tuple[Union[str, float]])->None:
 	""" Function to write .csv file. """		
@@ -29,20 +41,68 @@ def writeCSV(filename:str, *args:Tuple[Union[str, float]])->None:
         	writer.writerow(args)
 
 
+def coordinates(location:str)->Dict[str, str]:
+	""" Function to get coordinates of a location. """
+	def dictionnary(location:Dict[str, str], address:str, latitud:float, longitud:float)->Dict[str, str]:
+		x={"house_number": "", "road": "", "town": "", "municipality": "", "county": "", "state": "", "region": "", "postcode": "", "country": ""}
+		for key in location.keys():
+			if not key in ["ISO3166-2-lvl6", "ISO3166-2-lvl4"]:
+				x[key] = location[key]
+		x["name"] = address
+		x["latitud"] = latitud
+		x["longitud"] = longitud
+		return x
+	LANGUAGE = "eng"
+	try:	
+		coder = geopy.geocoders.Nominatim(user_agent="GetLoc")
+		loc = coder.geocode(location, language=LANGUAGE, addressdetails=True)
+	except geopy.exc.GeopyError: 
+		print("Error: geocode failed with message %s"%("geopy.exc.GeocoderTimedOut"))
+		loc = None
+	if loc == None:
+		return {}
+	return dictionnary(loc.raw['address'], loc.address, loc.latitude, loc.longitude)
+	
+	
+
 def add(filename:str, x:str)->None:
 	""" Function to commit ... """	
-	addr, latitud, longitud = coordinates(x)
-	
-	if not(addr == None and latitud == None and longitud == None):
-		print(f"\n\n{x} {addr} \n{latitud}, {longitud}")
-		writeCSV(f"{filename}.csv", addr, latitud, longitud)
+	location = coordinates(x)
+	if not location == {}:
+		print(f"\n\n{x}")
+		
+		for key in location.keys():
+			print("{}: {}".format(key, location[key]))
+		
+		writeCSV(f"{filename}.csv", HASH(location["name"]), location["name"],location["house_number"], location["road"], location["town"], location["municipality"], location["county"], location["state"], location["postcode"], location["country"], location["latitud"], location["longitud"])
 	else:
 		print(f"\n\nERREUR !! - {x}")
 		writeCSV(f"{filename}-err.csv", x)
 		
 
+
+def populate(filename:str, name:str)->None:
+	with open(filename, encoding='utf-8') as f:
+		reader = csv.reader(f, delimiter=';')
+		for row in reader:
+			#insert(name, (row[0], float(row[1]), float(row[2])))
+			insert(name, (row[0], row[1], f"{row[2]} {row[3]}", row[4], row[5], row[6], row[7], row[8], row[9], float(row[10]), float(row[11])))
+	
+
 if __name__ == "__main__":
 
-	filename = "Ain"
-	#readtxt(filename)
+	#drop(table)
+	#create(table, "Address, Latitud, Longitud")
+	#create(table,"Hash, Name, Address, Town, Municipality, Department, Region, Postcode, Country, Latitud, Longitud")
+
+	filename = "Haute-Savoie"
+	readtxt(filename)
 	readCSV(f"{filename}.csv")
+	
+	#populate("Haute-Savoie.csv", table)
+	#populate("Ain.csv", table)
+	
+	#select(table, f"SELECT * FROM {table}")
+	#select(table, f"SELECT * FROM {TABLE} ORDER BY Region,Department,Municipality,Town")
+	
+

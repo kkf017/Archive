@@ -5,7 +5,7 @@ import geopy
 
 HASH = lambda x: (hashlib.sha1(x.encode())).hexdigest()
 
-from services.database import *
+#from services.database import *
 
 from typing import Tuple, Dict, Union
 
@@ -35,7 +35,8 @@ def readCSV(filename:str)->None:
 		
 			
 def writeCSV(filename:str, *args:Tuple[Union[str, float]])->None:
-	""" Function to write .csv file. """		
+	""" Function to write .csv file. """
+	print(f"\033[31mCSV -> {filename}\033[00m")		
 	with open(filename, 'a', encoding='utf8') as fp:
         	writer = csv.writer(fp, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL, lineterminator='\n')
         	writer.writerow(args)
@@ -87,21 +88,34 @@ def populate(filename:str, name:str)->None:
 		for row in reader:
 			#insert(name, (row[0], float(row[1]), float(row[2])))
 			insert(name, (row[0], row[1], f"{row[2]} {row[3]}", row[4], row[5], row[6], row[7], row[8], row[9], float(row[10]), float(row[11])))
-	
+
 
 if __name__ == "__main__":
 
+	with open("deparments.txt", 'r') as f:
+		for line in f.readlines():
+			print(f"\033[35m\n\n\n************************************************************\033[00m")
+			print(f"\033[34m\t./{line[:-1]}/{line[:-1]}.txt\033[00m")
+			print(f"\033[35m************************************************************\033[00m")
+			filename = f"./{line[:-1]}/{line[:-1]}"
+			readtxt(filename)
+			readCSV(f"{filename}.csv")
+			print(f"\033[34m\n\n\nEnd.\033[00m")
+			#input()
+			
+	#filename = "zExceptions"
+	#readtxt(filename)
+	#readCSV(f"{filename}.csv")
+	
+	# fill exceptions - for each location (from LOC-err.csv)
+	
 	#drop(table)
 	#create(table, "Address, Latitud, Longitud")
 	#create(table,"Hash, Name, Address, Town, Municipality, Department, Region, Postcode, Country, Latitud, Longitud")
-
-	filename = "Haute-Savoie"
-	readtxt(filename)
-	readCSV(f"{filename}.csv")
 	
 	#populate("Haute-Savoie.csv", table)
-	#populate("Ain.csv", table)
 	
+	# Correct HTML with departments, regions ..etc
 	#select(table, f"SELECT * FROM {table}")
 	#select(table, f"SELECT * FROM {TABLE} ORDER BY Region,Department,Municipality,Town")
 	

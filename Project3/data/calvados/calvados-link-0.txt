@@ -30,6 +30,7 @@ https://www.boites-a-livres.fr/ville/graye-sur-mer/14470
 https://www.boites-a-livres.fr/ville/herouville-saint-clair/14200
 https://www.boites-a-livres.fr/ville/honfleur/14600
 https://www.boites-a-livres.fr/ville/houlgate/14510
+https://www.boites-a-livres.fr/ville/isigny-sur-mer/14230
 https://www.boites-a-livres.fr/ville/la-hoguette/14700
 https://www.boites-a-livres.fr/ville/langrune-sur-mer/14830
 https://www.boites-a-livres.fr/ville/le-castelet/14540
@@ -49,6 +50,7 @@ https://www.boites-a-livres.fr/ville/pennedepie/14600
 https://www.boites-a-livres.fr/ville/pont-l-eveque/14130
 https://www.boites-a-livres.fr/ville/ranville/14860
 https://www.boites-a-livres.fr/ville/rosel/14740
+https://www.boites-a-livres.fr/ville/rots/14980
 https://www.boites-a-livres.fr/ville/saint-arnoult/14800
 https://www.boites-a-livres.fr/ville/saint-laurent-sur-mer/14710
 https://www.boites-a-livres.fr/ville/saint-pierre-en-auge/14170

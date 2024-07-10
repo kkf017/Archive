@@ -8,6 +8,7 @@ https://www.boites-a-livres.fr/ville/bessines/79000
 https://www.boites-a-livres.fr/ville/bressuire/79300
 https://www.boites-a-livres.fr/ville/brioux-sur-boutonne/79170
 https://www.boites-a-livres.fr/ville/chatillon-sur-thouet/79200
+https://www.boites-a-livres.fr/ville/chef-boutonne/79110
 https://www.boites-a-livres.fr/ville/chiche/79350
 https://www.boites-a-livres.fr/ville/clussais-la-pommeraie/79190
 https://www.boites-a-livres.fr/ville/coulon/79510
@@ -28,6 +29,7 @@ https://www.boites-a-livres.fr/ville/limalonges/79190
 https://www.boites-a-livres.fr/ville/mauleon/79700
 https://www.boites-a-livres.fr/ville/mauze-sur-le-mignon/79210
 https://www.boites-a-livres.fr/ville/mazieres-en-gatine/79310
+https://www.boites-a-livres.fr/ville/melle/79500
 https://www.boites-a-livres.fr/ville/melleran/79190
 https://www.boites-a-livres.fr/ville/menigoute/79340
 https://www.boites-a-livres.fr/ville/moncoutant-sur-sevre/79320

@@ -67,6 +67,7 @@ https://www.boites-a-livres.fr/ville/mamers/72600
 https://www.boites-a-livres.fr/ville/marcon/72340
 https://www.boites-a-livres.fr/ville/mareil-sur-loir/72200
 https://www.boites-a-livres.fr/ville/marigne-laille/72220
+https://www.boites-a-livres.fr/ville/marolles-les-braults/72260
 https://www.boites-a-livres.fr/ville/mayet/72360
 https://www.boites-a-livres.fr/ville/melleray/72320
 https://www.boites-a-livres.fr/ville/mezeray/72270
@@ -106,6 +107,7 @@ https://www.boites-a-livres.fr/ville/saint-ouen-de-mimbre/72130
 https://www.boites-a-livres.fr/ville/saint-ouen-en-belin/72220
 https://www.boites-a-livres.fr/ville/saint-paterne-le-chevain/72610
 https://www.boites-a-livres.fr/ville/saint-pavace/72190
+https://www.boites-a-livres.fr/ville/saint-pierre-des-ormes/72600
 https://www.boites-a-livres.fr/ville/saint-remy-des-monts/72600
 https://www.boites-a-livres.fr/ville/saint-remy-du-val/72600
 https://www.boites-a-livres.fr/ville/saint-saturnin/72650

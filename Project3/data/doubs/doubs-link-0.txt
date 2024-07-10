@@ -51,6 +51,7 @@ https://www.boites-a-livres.fr/ville/domprel/25510
 https://www.boites-a-livres.fr/ville/doubs/25300
 https://www.boites-a-livres.fr/ville/dung/25550
 https://www.boites-a-livres.fr/ville/ecurcey/25150
+https://www.boites-a-livres.fr/ville/etalans/25580
 https://www.boites-a-livres.fr/ville/etrappe/25250
 https://www.boites-a-livres.fr/ville/etray/25800
 https://www.boites-a-livres.fr/ville/etupes/25460
@@ -87,6 +88,8 @@ https://www.boites-a-livres.fr/ville/les-grangettes/25160
 https://www.boites-a-livres.fr/ville/les-gras/25790
 https://www.boites-a-livres.fr/ville/les-hopitaux-neufs/25370
 https://www.boites-a-livres.fr/ville/les-pontets/25240
+https://www.boites-a-livres.fr/ville/les-premiers-sapins/25580
+https://www.boites-a-livres.fr/ville/levier/25270
 https://www.boites-a-livres.fr/ville/liebvillers/25190
 https://www.boites-a-livres.fr/ville/lizine/25330
 https://www.boites-a-livres.fr/ville/longevilles-mont-d-or/25370

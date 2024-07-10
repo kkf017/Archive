@@ -7,7 +7,7 @@ import bs4
 # pip install regex
 
 FOLDER = "/home/ksys/Documents/Project3/data/"
-EXCEPT = ["dordogne", "https://www.boites-a-livres.fr/ville/aigre/16140", "https://www.boites-a-livres.fr/ville/aigre/16140","https://www.boites-a-livres.fr/ville/ailhon/07200", "https://www.boites-a-livres.fr/ville/magnieu/01300", "https://www.boites-a-livres.fr/ville/moulins/03000", "https://www.boites-a-livres.fr/ville/bazeilles/08140"]
+EXCEPT = ["dordogne", "https://www.boites-a-livres.fr/ville/aigre/16140", "https://www.boites-a-livres.fr/ville/aigre/16140","https://www.boites-a-livres.fr/ville/ailhon/07200", "https://www.boites-a-livres.fr/ville/magnieu/01300", "https://www.boites-a-livres.fr/ville/moulins/03000", "https://www.boites-a-livres.fr/ville/bazeilles/08140", "https://www.boites-a-livres.fr/ville/saint-bonnet-de-rochefort/03800", "https://www.boites-a-livres.fr/ville/isigny-sur-mer/14230", "https://www.boites-a-livres.fr/ville/rots/14980", "https://www.boites-a-livres.fr/ville/murat/15300", "https://www.boites-a-livres.fr/ville/confolens/16500", "https://www.boites-a-livres.fr/ville/vergeroux/17300", "https://www.boites-a-livres.fr/ville/dinan/22100", "https://www.boites-a-livres.fr/ville/jugon-les-lacs-commune-nouvelle/22270", "https://www.boites-a-livres.fr/ville/etalans/25580", "https://www.boites-a-livres.fr/ville/les-premiers-sapins/25580", "https://www.boites-a-livres.fr/ville/levier/25270", "https://www.boites-a-livres.fr/ville/chatillon-en-diois/26410", "https://www.boites-a-livres.fr/ville/pacy-sur-eure/27120", "https://www.boites-a-livres.fr/ville/langeais/37130"]
 
 
 
@@ -78,10 +78,10 @@ def get_place(filename):
 				msg = copy.copy(msg[y+len(">Voir la fiche détaillée</a></small>"):])
 			return res
 			
-		if True: #with open("{FOLDER}{filename}/{filename}.txt", 'w') as writer:	
+		with open(f"{FOLDER}{filename}/{filename}.txt", 'w') as writer:	
 			with open(f"{FOLDER}{filename}/{filename}-link.txt", 'r') as f:
 				for line in f.readlines():
-					print("\n\n--->",line)
+					print(f"\n\n--->\033[34m{line}\033[00m")
 					
 					if not line in EXCEPT:
 						page = urlopen(line)
@@ -91,7 +91,7 @@ def get_place(filename):
 						x = get_text_1(html)
 						if not x == None:
 							print(x)
-							#writer.write(x+"\n")
+							writer.write(x+"\n")
 						else:
 							soup = bs4.BeautifulSoup(html) 
 							for li in soup.findAll('script', {"type": "text/javascript"}):
@@ -102,14 +102,14 @@ def get_place(filename):
 									html = html.decode("utf-8")
 									x = get_text_1(html)
 									print(x)
-									#writer.write(x+"\n")
+									writer.write(x+"\n")
 				
 				
 	with open(filename, 'r') as f:
 		for line in f.readlines():
-			print(f"\n\n\n************************************************************")
-			print(f"{FOLDER}{line[:-1]}/{line[:-1]}-link.txt")
-			print(f"************************************************************")
+			print(f"\033[35m\n\n\n************************************************************\033[00m")
+			print(f"\033[35m {FOLDER}{line[:-1]}/{line[:-1]}-link.txt\033[00m")
+			print(f"\033[35m************************************************************\033[00m")
 			link(line[:-1]) #f"{FOLDER}{line[:-1]}/{line[:-1]}-link.txt")
 			input()
 	
@@ -117,4 +117,4 @@ def get_place(filename):
 if __name__ == "__main__":
 
 	#get_municipality("deparments-link.txt")
-	get_place("deparments-name.txt")
+	get_place("deparments.txt")

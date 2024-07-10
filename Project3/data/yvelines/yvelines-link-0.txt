@@ -45,6 +45,7 @@ https://www.boites-a-livres.fr/ville/poigny-la-foret/78125
 https://www.boites-a-livres.fr/ville/poissy/78300
 https://www.boites-a-livres.fr/ville/rambouillet/78120
 https://www.boites-a-livres.fr/ville/saint-cyr-l-ecole/78210
+https://www.boites-a-livres.fr/ville/saint-germain-en-laye/78100
 https://www.boites-a-livres.fr/ville/saint-remy-les-chevreuse/78470
 https://www.boites-a-livres.fr/ville/sartrouville/78500
 https://www.boites-a-livres.fr/ville/septeuil/78790

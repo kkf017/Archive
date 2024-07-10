@@ -33,6 +33,7 @@ https://www.boites-a-livres.fr/ville/moulins/03000
 https://www.boites-a-livres.fr/ville/neris-les-bains/03310
 https://www.boites-a-livres.fr/ville/paray-le-fresil/03230
 https://www.boites-a-livres.fr/ville/pierrefitte-sur-loire/03470
+https://www.boites-a-livres.fr/ville/saint-bonnet-de-rochefort/03800
 https://www.boites-a-livres.fr/ville/saint-genest/03310
 https://www.boites-a-livres.fr/ville/saint-gerand-le-puy/03150
 https://www.boites-a-livres.fr/ville/saint-leopardin-d-augy/03160

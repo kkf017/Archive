@@ -1,6 +1,7 @@
 https://www.boites-a-livres.fr/ville/beaussais-sur-mer/22650
 https://www.boites-a-livres.fr/ville/binic-etables-sur-mer/22520
 https://www.boites-a-livres.fr/ville/caurel/22530
+https://www.boites-a-livres.fr/ville/dinan/22100
 https://www.boites-a-livres.fr/ville/erquy/22430
 https://www.boites-a-livres.fr/ville/frehel/22240
 https://www.boites-a-livres.fr/ville/gouarec/22570
@@ -12,6 +13,7 @@ https://www.boites-a-livres.fr/ville/henanbihen/22550
 https://www.boites-a-livres.fr/ville/henon/22150
 https://www.boites-a-livres.fr/ville/hillion/22120
 https://www.boites-a-livres.fr/ville/ile-de-brehat/22870
+https://www.boites-a-livres.fr/ville/jugon-les-lacs-commune-nouvelle/22270
 https://www.boites-a-livres.fr/ville/kerbors/22610
 https://www.boites-a-livres.fr/ville/la-motte/22600
 https://www.boites-a-livres.fr/ville/la-roche-jaudy/22450

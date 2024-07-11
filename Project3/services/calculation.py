@@ -15,15 +15,17 @@ def fill()->List[str]:
 	cursor = db.cursor()
 	rows = cursor.execute(request)
 	for row in rows:
-		result.append(row[1])
+		new = {}
+		new["Hash"] = row[0]
+		new["Address"] = row[1]
+		result.append(new)
 	db.commit()
 	db.close()
 	return result
 	
 	
-def filters(key:str, value:str)->List[str]:
-	print(key, value)	
-	request = f"SELECT * FROM {TABLE} WHERE {key}='{value}' ORDER BY Region,Department,Municipality,Town;"
+def filters(key:str, value:str)->List[str]:	
+	request = f'''SELECT * FROM {TABLE} WHERE {key}="{value}" ORDER BY Region,Department,Municipality,Town;'''
 	
 	if key == None and value == None:
 		return []
@@ -33,7 +35,34 @@ def filters(key:str, value:str)->List[str]:
 	cursor = db.cursor()
 	rows = cursor.execute(request)
 	for row in rows:
-		result.append(row[1])
+		new = {}
+		new["Hash"] = row[0]
+		new["Address"] = row[1]
+		result.append(new)
+	db.commit()
+	db.close()
+	return result
+
+def searchID(value:str):
+	request = f'''SELECT * FROM {TABLE} WHERE Hash="{value}";'''
+	
+	result = []
+	db = sqlite3.connect(DATABASE)
+	cursor = db.cursor()
+	rows = cursor.execute(request)
+	for row in rows:
+		new = {}
+		new["Hash"] = row[0]
+		new["Address"] = row[1]
+		new["Town"] = row[2]
+		new["Municipality"] = row[3]
+		new["Department"] = row[4]
+		new["Region"] = row[5]
+		new["Postcode"] = row[6]
+		new["Country"] = row[7]
+		new["Latitud"] = row[8]
+		new["Longitud"] = row[9]
+		result.append(new)
 	db.commit()
 	db.close()
 	return result
@@ -46,7 +75,7 @@ def sphere(location:str, radius:float)->Dict[str, List[Dict[str, Union[str, floa
 	
 	const = loc1.nearest(radius)
 	rad = math.pi / 180
-	request = f"SELECT Name, Latitud, Longitud FROM {TABLE} a WHERE ( {const} <= {loc1.x} * cos(a.latitud * {rad}) * cos(a.longitud * {rad}) + {loc1.y} * cos(a.latitud * {rad}) * sin(a.longitud * {rad}) + {loc1.z} * sin(a.latitud * {rad}) )"
+	request = f"SELECT Hash, Name, Latitud, Longitud FROM {TABLE} a WHERE ( {const} <= {loc1.x} * cos(a.latitud * {rad}) * cos(a.longitud * {rad}) + {loc1.y} * cos(a.latitud * {rad}) * sin(a.longitud * {rad}) + {loc1.z} * sin(a.latitud * {rad}) )"
 	
 	result = []
 	db = sqlite3.connect(DATABASE)
@@ -54,8 +83,9 @@ def sphere(location:str, radius:float)->Dict[str, List[Dict[str, Union[str, floa
 	rows = cursor.execute(request)
 	for row in rows:
 		new = {}
-		loc2 = Location(row[0], float(row[1]), float(row[2]))
-		new["Address"] = row[0]
+		loc2 = Location(row[1], float(row[2]), float(row[3]))
+		new["Hash"] = row[0]
+		new["Address"] = row[1]
 		new["distance"] = '{:.2f}'.format(euclidean(loc1,loc2))
 		result.append(new)
 	db.commit()

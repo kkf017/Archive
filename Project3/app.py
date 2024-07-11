@@ -1,7 +1,7 @@
 import flask
 
 from services.config import * 
-from services.calculation import sphere, fill, filters
+from services.calculation import *
 
 #https://www.boites-a-livres.fr/
 #https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/
@@ -12,36 +12,35 @@ from services.calculation import sphere, fill, filters
 # List of books per place - add/remove
 # Exchange
 
-# Check and complete data - for database
+# html how to include link to open street maps
+# https://blog.hubspot.com/website/how-to-embed-google-map-in-html
+# https://webmasters.stackexchange.com/questions/141858/make-a-link-for-an-address-that-opens-the-default-map-app
+# https://medium.com/@nargessmi87/how-to-embede-open-street-map-in-a-webpage-like-google-maps-8968fdad7fe4
 
 
-# Check ... for urls.
-
-
-# https://stackoverflow.com/questions/55818303/show-location-of-coordinates-on-google-maps-using-python
-# folium - https://stackoverflow.com/questions/72249181/how-to-insert-points-in-a-map
+#https://medium.com/geekculture/how-to-make-a-web-map-with-pythons-flask-and-leaflet-9318c73c67c3
 
 @app.route("/")
 def home()->str:	
 	return flask.render_template("home.html")	
 
 
-@app.route("/search/", methods=['GET','POST'])
-def search()->str:
+@app.route("/location/", methods=['GET','POST']) # request
+def location()->str:
 	if flask.request.method == 'POST':	
 		result = sphere(flask.request.form["search-addr"], float(flask.request.form["search-radius"]))
-	return flask.render_template("search.html", result = result)
+	return flask.render_template("location.html", result = result)
 	
 
-@app.route("/list/", methods=['POST'])
-def list()->str:
+@app.route("/search/", methods=['POST']) # search
+def search()->str:
 	if flask.request.method == 'POST':	
 		result = fill()	
-	return flask.render_template("list.html", result = result)	
+	return flask.render_template("search.html", result = result)	
 
 
-@app.route("/filter/", methods=['POST'])
-def filter()->str:
+@app.route("/request/", methods=['POST']) # searchit
+def request()->str:
 	key, value = (None, None)
 
 	if not flask.request.form["filter-country"] == "None":
@@ -57,11 +56,28 @@ def filter()->str:
 		key, value = ("Town", flask.request.form["filter-town"])
 
 	result = filters(key, value)
-	return flask.render_template("list.html", result = result)
+	return flask.render_template("request.html", result = result)
 
-@app.route("/bookbox/", methods=['POST'])
-def bookbox()->str:
-	return flask.render_template("bookbox.html")
+
+
+
+@app.route("/search/place", methods=['POST'])
+def bookboxlist()->str:
+	result = searchID(flask.request.args.get('id'))
+	markers =[ {'Address': 'THE PLACEs','lat':46.263996, 'lon':6.029845731313132, 'popup':'This is the middle of the map.'}]
+	return flask.render_template("BOX.html", result = result[0])
+	
+@app.route("/request/place", methods=['POST'])
+def bookboxfilter()->str:
+	result = searchID(flask.request.args.get('id'))
+	return flask.render_template("bookbox.html", result = result[0])
+	
+@app.route("/location/place", methods=['POST'])
+def bookboxsearch()->str:
+	result = searchID(flask.request.args.get('id'))
+	return flask.render_template("bookbox.html", result = result[0])
+
+
 	
 	
 @app.route("/getmap/", methods=['POST'])
@@ -70,7 +86,9 @@ def getmap()->str:
 
 @app.route("/unknown/", methods=['POST'])
 def unknown()->str:
-	return flask.render_template("unknown.html")	
+	return flask.render_template("unknown.html")
+	#markers =[ {'lat':46.263996, 'lon':6.029845731313132, 'popup':'This is the middle of the map.'}]
+	#return flask.render_template("BOX2.html", markers = markers[0])	
 
 	
 	

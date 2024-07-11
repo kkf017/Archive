@@ -92,6 +92,7 @@ def populate(filename:str, name:str)->None:
 
 if __name__ == "__main__":
 
+	"""
 	with open("deparments.txt", 'r') as f:
 		for line in f.readlines():
 			print(f"\033[35m\n\n\n************************************************************\033[00m")
@@ -102,10 +103,11 @@ if __name__ == "__main__":
 			readCSV(f"{filename}.csv")
 			print(f"\033[34m\n\n\nEnd.\033[00m")
 			#input()
+	"""
 			
 	#filename = "zExceptions"
 	#readtxt(filename)
-	#readCSV(f"{filename}.csv")
+	#readCSV(f"{filename}.csv"
 	
 	# fill exceptions - for each location (from LOC-err.csv)
 	

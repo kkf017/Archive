@@ -35,24 +35,41 @@ def request(value:str, verbose:bool)->sqlite3.Cursor:
 	rows = cursor.execute(value)
 	if verbose:
 		for row in rows:
-			print(f"\n{row}")	
+			print(f"\n{row}")
 	db.commit()
 	db.close()
 	return rows	
 
-	
+
+
+def populate(filename:str, name:str)->None:
+	with open(filename, encoding='utf-8') as f:
+		reader = csv.reader(f, delimiter=';')
+		for row in reader:
+			#insert(name, (row[0], float(row[1]), float(row[2])))
+			insert(name, (row[0], row[1], f"{row[2]} {row[3]}", row[4], row[5], row[6], row[7], row[8], row[9], float(row[10]), float(row[11])))	
 				
 		
 if __name__ == "__main__":
 	
 	table = "Location"
 	
-	#drop(table)
-	#create(table, "Address, Latitud, Longitud")
-	#create(table,"Hash, Name, Address, Town, Municipality, Department, Region, Postcode, Country, Latitud, Longitud")
-
+	"""
+	drop(table)
+	create(table,"Hash, Name, Address, Town, Municipality, Department, Region, Postcode, Country, Latitud, Longitud")
 	
-	select(table, "SELECT DISTINCT Town FROM Location ORDER BY Town;")
+	with open("/home/ksys/Documents/Project3/data/deparments.txt", encoding='utf-8') as f:
+		reader = csv.reader(f, delimiter=';')
+		for filename in reader:
+			filename = f"/home/ksys/Documents/Project3/data/{filename[0]}/{filename[0]}.csv"
+			print(f"\033[34m{filename}\033[00m")
+			populate(filename, table)
+			select(table, f"SELECT DISTINCT Department FROM {table}")
+			#input()
+	"""
+	
+	# Pays, Region, Department, Town
+	select(table, '''SELECT * FROM Location WHERE Region="Provence-Alpes-Côte d'Azur"''')
 
 
 	"""

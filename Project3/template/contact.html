@@ -78,21 +78,21 @@
 
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE I WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
+  <h2 class="w3-center">You want to participate ?</h2>
+  <p class="w3-center"><em>Don't hesitate to give the address of your <strong>book box</strong> with the following formular, or send an email at <strong><a class="w3-text-purple" href=mailto:“....@....com”>...@....com</a></strong>.</em></p>
 
   <div class="w3-row w3-padding-32 w3-section">
     <!---<div class="w3-col m4 w3-container">
        <img src="../static/img/redpanda.jpg" class="w3-image w3-round" style="width:100%">
     </div>-->
-    <div class="w3-col m8 w3-panel">
+  
       <div class="w3-large w3-margin-bottom">
         <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
         <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
       </div>
       <p>Swing by for a cup of, or leave me a note:</p>
-      <form action="/action_page.php" target="_blank">
+      <form action="/send/" enctype="multipart/form-data" method="post">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <div class="w3-half">
             <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
@@ -102,11 +102,12 @@
           </div>
         </div>
         <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-        <button class="w3-button w3-black w3-right w3-section" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
+        <p></p>
+        <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+        <p align="center"><button class="w3-button w3-dark-grey w3-center w3-section" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND </button></p>
       </form>
-    </div>
+   
   </div>
 </div>
 

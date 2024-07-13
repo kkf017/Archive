@@ -83,6 +83,10 @@ def locationPlace()->str:
 @app.route("/contact/", methods=['POST'])
 def contact()->str:
 	return flask.render_template("contact.html")
+	
+@app.route("/send/", methods=['POST'])
+def send()->str:
+	return flask.render_template("unknown.html")
 
 @app.route("/unknown/", methods=['POST'])
 def unknown()->str:

@@ -2,7 +2,7 @@ import csv
 import math
 
 from services.database import *
-from services.geography import Location, coordinates, euclidean	
+from services.geography import Location, coordinates, euclidean, mappy
 
 from typing import List, Dict, Union
 
@@ -54,14 +54,17 @@ def searchID(value:str):
 		new = {}
 		new["Hash"] = row[0]
 		new["Address"] = row[1]
-		new["Town"] = row[2]
-		new["Municipality"] = row[3]
-		new["Department"] = row[4]
-		new["Region"] = row[5]
-		new["Postcode"] = row[6]
-		new["Country"] = row[7]
-		new["Latitud"] = row[8]
-		new["Longitud"] = row[9]
+		new["street"] = row[2]
+		new["Town"] = row[3]
+		new["Municipality"] = row[4]
+		new["Department"] = row[5]
+		new["Region"] = row[6]
+		new["Postcode"] = row[7]
+		new["Country"] = row[8]
+		new["Latitud"] = row[9]
+		new["Longitud"] = row[10]
+		
+		mappy(row[0], (row[9], row[10]))
 		result.append(new)
 	db.commit()
 	db.close()

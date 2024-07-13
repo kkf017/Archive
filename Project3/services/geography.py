@@ -1,5 +1,7 @@
+import os
 import math
 import geopy
+import folium
 
 from typing import Tuple, Union
 
@@ -69,5 +71,13 @@ def euclidean(loc1:Location, loc2:Location)->float:
 	return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
 
 
+def mappy(name:str, point:Tuple[float]):
+	""" Function to create a map (with folium library) """
+	if not os.path.exists(f"./static/maps/{name}.html"):
+		matlon = [point]
+		mapit = folium.Map( location=point, zoom_start=6 ) #None
+		for coord in matlon:
+		   folium.Marker( location=[ coord[0], coord[1] ], fill_color='#43d9de', radius=8 ).add_to( mapit )	  
+		mapit.save(f"./static/maps/{name}.html")
 
 

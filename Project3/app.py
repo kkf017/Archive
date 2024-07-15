@@ -91,6 +91,11 @@ def send()->str:
 @app.route("/unknown/", methods=['POST'])
 def unknown()->str:
 	return flask.render_template("unknown.html")	
+	
+@app.route("/location/unknown", methods=['POST'])
+def locationUnknown()->str:
+	print(searchID(flask.request.args.get('id')))
+	return flask.render_template("unknown.html")
 
 	
 	

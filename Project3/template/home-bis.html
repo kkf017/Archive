@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home Template</title>
+	<title>OBOTR</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../static/style.css">
@@ -26,13 +26,23 @@
 </head>
 <body class="w3-light-grey">
 
-<!-- Navigation Bar -->
-<div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-  <a href="/" class="w3-bar-item w3-button w3-text-pink w3-hover-pink"><b><i class="fa fa-map-marker w3-margin-right"></i>Logo</b></a>  
-  
-  <a href="/" class="w3-bar-item w3-button w3-right w3-hover-purple w3-text-grey"><i class=""></i>Login</b></a>
-</div>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-light-grey w3-card w3-left-align w3-medium">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-purple w3-medium" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    
+    <a href="/" class="fa fa-home w3-bar-item w3-button w3-padding-large w3-pink"></a>
+    
 
+
+    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-right w3-text-black"><i class=""></i>Login</b></a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+  </div>
+</div>
 
 
 <!-- Header -->
@@ -44,93 +54,43 @@
     </div> 
     <!-- Tabs -->
     <div class="w3-container w3-white w3-padding-16">
-    <form action="/search/" enctype="multipart/form-data" method="post">
-      <h3>Find your Book Box !</h3>
-       <p>Roundtrip from $79</p>
+    
+    <form action="/login/" enctype="multipart/form-data" method="post">
+      <h3><strong>Login</strong>, or <strong>create</strong> your account.</h3>
        
-      <div class="w3-row-padding" style="margin:0 -16px;">
-        <div class="w3-threequarter">
-          <label></label> 
-          	<input class="w3-input w3-border" type="text" placeholder="Address"  id="searchAddr" name="searchAddr" style="">
-        </div>      
-        <div class="w3-quarter">
-          <label></label>
-          <select class="w3-select w3-border w3-white" name="search-radius" id="search-radius">
-	    <option value="10">10 km</option>
-	    <option value="20">20 km</option>
-	    <option value="30">30 km</option>
-	    <option value="30">50 km</option>
-	  </select>
+     
+        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Username" required name="Username">
+          </div>
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="email" placeholder="Email" required name="Email">
+          </div>
         </div>
-      </div>  								 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      		<button class="w3-button w3-dark-grey" name="search-nearest" type="submit">Search</button></p>
+        
+        
+        <input class="w3-input w3-border" type="password" placeholder="Password" required name="password" id="password">
+        <p></p>
+        <input class="w3-input w3-border w3-left-align" type="password" placeholder="Check your password" required name="password-check" id="password-check">
+        
+       <p></p>
+      <input type="checkbox" onclick="SeeIt()">Show Password
+      <p></p>
+      <input class="w3-purple" type="checkbox" name="createAccount"><strong>Create account.</strong>
+      
+      
+        <p align="center"><button class="w3-button w3-dark-grey w3-center w3-section" type="submit">
+          <i class="fa fa-paper-plane"></i> Login </button></p>
+     
       	</form>
     </div>
   </div>
 </header>
 
-<!-- Page content -->
-<!--<div class="w3-content" style="max-width:1100px;">
-  <div class="w3-container w3-margin-toop">
-    <h3></h3>
-    <p></p>
-  </div>
-  <div class="w3-row-padding">
-    <div class="w3-half w3-margin-bottom ">
-      <div class="w3-container w3-white">
-        <h3>Find it by yourself !</h3>
-        <p>Get the full list of book boxes.</p>
-        <p class="w3-opacity">Roundtrip from $79</p>
-        
-        <form action="/all/" method="post">
-          <button class="w3-button w3-margin-bottom w3-purple" name="allBB" type="submit" >Let's see ! >></button>
-        </form>
-        
-      </div>
-    </div>
-    <div class="w3-half w3-margin-bottom">-
-      <div class="w3-container w3-white">
-        <h3>Add ur own place !</h3>
-        <p>You want to particpate ? Give the address of the closest book box to you.</p>
-         <p class="w3-opacity">One-way from $39</p>
-        <button class="w3-button w3-margin-bottom w3-pink">Send it !>></button>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- Newsletter -->
-  <!--<div class="w3-container">
-    <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
-      <h2>Get the best offers first!</h2>
-      <p>Join our newsletter.</p>
-      <label>E-mail</label>
-      <input class="w3-input w3-border" type="text" placeholder="Your Email address">
-      <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
-    </div>
-  </div>-->
-  
-  <!-- Contact -->
-  <!--<div class="w3-container">
-    <h2>Contact</h2>
-    <p>Let us book your next trip!</p>
-    <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
-    <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
-    <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
-    </form>
-  </div> -->
-  
-<!-- End page content -->
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-center w3-opacity w3-margin-toop">
+<!--<footer class="w3-container w3-center w3-opacity w3-margin-toop">
   <h5>Find Us On</h5>
   <div class="w3-xlarge w3-padding-16">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -141,6 +101,25 @@
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
   <p>Powered by <a href="https://www.boites-a-livres.fr/" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+</footer>-->
+
 </body>
+
+<script>
+function SeeIt() {
+  var x = document.getElementById("password");
+  var y = document.getElementById("password-check");
+  if (x.type === "password"){
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+  
+  if (y.type === "password"){
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }
+}
+</script>
 </html>

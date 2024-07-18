@@ -1,104 +1,38 @@
 import flask
 
 from services.config import * 
-from services.calculation import *
+from services.management import *
 
-#https://www.boites-a-livres.fr/
-#https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/
-
-# Find it by yourself ! Get the full list of book boxes.
-# Add ur own place ! You want to particpate ? Give the address of the closest book box to you.
-# add geolocation - find the closest box .. your geolocation
-# List of books per place - add/remove
-# Exchange
-
-# html how to include link to open street maps
-# https://blog.hubspot.com/website/how-to-embed-google-map-in-html
-# https://webmasters.stackexchange.com/questions/141858/make-a-link-for-an-address-that-opens-the-default-map-app
-# https://medium.com/@nargessmi87/how-to-embede-open-street-map-in-a-webpage-like-google-maps-8968fdad7fe4
-
-
-#https://medium.com/geekculture/how-to-make-a-web-map-with-pythons-flask-and-leaflet-9318c73c67c3
 
 @app.route("/")
 def home()->str:
 	# remove all files from ../static/maps	
-	return flask.render_template("home.html")	
+	return flask.render_template("home-bis.html", display=[1]
+	)
 
 
-@app.route("/location/", methods=['GET','POST']) # request
-def location()->str:
-	if flask.request.method == 'POST':	
-		result = sphere(flask.request.form["search-addr"], float(flask.request.form["search-radius"]))
-	return flask.render_template("location.html", result = result)
-	
-
-@app.route("/search/", methods=['POST']) # search
-def search()->str:
-	if flask.request.method == 'POST':	
-		result = fill()	
-	return flask.render_template("search.html", result = result)	
-
-
-@app.route("/request/", methods=['POST']) # searchit
-def request()->str:
-	key, value = (None, None)
-
-	if not flask.request.form["filter-country"] == "None":
-		key, value = ("Country", flask.request.form["filter-country"])
-
-	if not flask.request.form["filter-region"] == "None":
-		key, value = ("Region", flask.request.form["filter-region"])	
+@app.route("/login/", methods=['POST'])
+def login()->str:
+	username = flask.request.form["Username"]
+	email = flask.request.form["Email"]
+	password = flask.request.form["password"]
+	check = flask.request.form["password-check"]
+	acc = flask.request.form.get("createAccount")
 		
-	if not flask.request.form["filter-department"] == "None":
-		key, value = ("Department", flask.request.form["filter-department"])	
+	# Create account
+	if check=="on":
+		if not password == check:
+			pass
+		# add to database
+		pass
+	# Login	
+	else:
+		# check if email-username in database
+		# login with password
+		pass
 	
-	if not flask.request.form["filter-town"] == "None":
-		key, value = ("Town", flask.request.form["filter-town"])
+	return flask.render_template("home-bis.html")
 
-	result = filters(key, value)
-	return flask.render_template("request.html", result = result)
-
-
-
-
-@app.route("/search/place", methods=['POST'])
-def SearchPlace()->str:
-	result = searchID(flask.request.args.get('id'))
-	return flask.render_template("place.html", result = result[0])
-	
-@app.route("/request/place", methods=['POST'])
-def RequestPlace()->str:
-	result = searchID(flask.request.args.get('id'))
-	return flask.render_template("place.html", result = result[0])
-	
-@app.route("/location/place", methods=['POST'])
-def locationPlace()->str:
-	result = searchID(flask.request.args.get('id'))
-	return flask.render_template("place.html", result = result[0])
-
-
-
-
-@app.route("/contact/", methods=['POST'])
-def contact()->str:
-	return flask.render_template("contact.html")
-	
-@app.route("/send/", methods=['POST'])
-def send()->str:
-	return flask.render_template("unknown.html")
-
-@app.route("/unknown/", methods=['POST'])
-def unknown()->str:
-	return flask.render_template("unknown.html")	
-	
-@app.route("/location/unknown", methods=['POST'])
-def locationUnknown()->str:
-	print(searchID(flask.request.args.get('id')))
-	return flask.render_template("unknown.html")
-
-	
-	
 if __name__ == "__main__":
 
 	app.run(debug=True)

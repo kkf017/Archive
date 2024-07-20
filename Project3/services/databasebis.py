@@ -6,7 +6,7 @@ from typing import Tuple, Optional, Any
 
 HASH = lambda x: (hashlib.sha1(x.encode())).hexdigest()
 
-DATABASE = 'users.db'
+DATABASE = f'users.db'
 TABLE = "Users"
 
 def drop(table:str)->sqlite3.Cursor:
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 	username = "smililly"
 	email = "smililly@yahoo.com"
 	password = "smililly<3LOVEsU"
-	insert(TABLE, (HASH(email), email, username, password))
+	insert(TABLE, (HASH(email), email, username, HASH(password)))
 	
 	# Pays, Region, Department, Town
 	select(TABLE, f'''SELECT * FROM {TABLE}''')

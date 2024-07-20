@@ -7,6 +7,9 @@ from services.calculation import *
 #https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/
 
 
+# manage PATH of database - geographic.db, users.db (move file)
+
+
 @app.route("/")
 def home()->str:
 	# remove all files from ../static/maps	

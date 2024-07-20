@@ -50,24 +50,39 @@
   <!--<img class="w3-image" src="../static/img/cute1.jpeg" alt="home"> -->
   <div class="w3-display-middle w3-margin-175" style="width:65%">
     <div class="w3-bar w3-black">
-      <h3> Login </h3>
+       <h3> Create your account </h3>
     </div> 
     <!-- Tabs -->
     <div class="w3-container w3-white w3-padding-16">
-    <p></p>
-    <form action="/login/" enctype="multipart/form-data" method="post">     
     
-        <input class="w3-input w3-border" type="email" placeholder="Email" required name="Email"><p></p>
-        <input class="w3-input w3-border" type="password" placeholder="Password" required name="password" id="password"><p></p>
-      <input type="checkbox" onclick="SeeIt()">Show Password <p></p>
+    <form action="/registration/" enctype="multipart/form-data" method="post">
+         
+        <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="text" placeholder="Username" required name="Username">
+          </div>
+          <div class="w3-half">
+            <input class="w3-input w3-border" type="email" placeholder="Email" required name="Email">
+          </div>
+        </div>
+        
+        
+        <input class="w3-input w3-border" type="password" placeholder="Password" required name="password" id="password">
+        <p></p>
+        <input class="w3-input w3-border w3-left-align" type="password" placeholder="Check your password" required name="password-check" id="password-check">
+        
+       <p></p>
+      <input type="checkbox" onclick="SeeIt()">Show Password
+      <p></p>
       
-        <p align="center"><button class="w3-button w3-dark-grey w3-center w3-section" type="submit">
-          <i class="fa fa-paper-plane"></i> Login </button></p>
-     </form>
+        <p align="center"><button class="w3-button w3-dark-grey w3-center w3-section" type="submit">        
+         
+          <i class="fa fa-paper-plane"></i> Create your account ! </button></p>
+      	</form>
       	
-     <form action="/register/" enctype="multipart/form-data" method="post">
-           <button class="astext w3-text-purple"><u><strong>Create</strong> your account !</u></button>
-     </form>
+      	<!---<form action="/home" enctype="multipart/form-data" method="post">
+           <button class="astext w3-text-purple"><u><strong>Login</strong></u></button>
+     </form>--->
       
     </div> 
   </div>

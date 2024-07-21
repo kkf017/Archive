@@ -35,7 +35,7 @@
     
 
 
-    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-right w3-text-black"><i class=""></i>Login</b></a>
+    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-right w3-text-black"><i class=""></i>Login</b></a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -61,12 +61,19 @@
         <input class="w3-input w3-border" type="password" placeholder="Password" required name="password" id="password"><p></p>
       <input type="checkbox" onclick="SeeIt()">Show Password <p></p>
       
+      <p><h5 class="w3-text-deep-orange"> {{msg}} </h5></p>
+      
         <p align="center"><button class="w3-button w3-dark-grey w3-center w3-section" type="submit">
           <i class="fa fa-paper-plane"></i> Login </button></p>
      </form>
       	
      <form action="/register/" enctype="multipart/form-data" method="post">
-           <button class="astext w3-text-purple"><u><strong>Create</strong> your account !</u></button>
+           <button class="astext w3-text-purple w3-left"><u>Create your account !</u></button>
+     </form>
+     
+     
+     <form action="/unknown/" enctype="multipart/form-data" method="post">
+           <button class="astext w3-text-indigo w3-right"><u>Forget your password</u></button>
      </form>
       
     </div> 

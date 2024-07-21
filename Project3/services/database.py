@@ -1,10 +1,13 @@
+import os.path
 import csv
 import sqlite3
+
+from services.config import PATH
 
 from typing import Tuple, Optional, Any
 
 
-DATABASE = 'geographic.db'
+DATABASE = os.path.join(PATH, 'geographic.db')
 TABLE = "Location"
 
 def drop(table:str)->sqlite3.Cursor:

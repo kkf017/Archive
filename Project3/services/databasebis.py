@@ -1,13 +1,16 @@
+import os.path
 import csv
 import sqlite3
 import hashlib
 
-from typing import Tuple, Optional, Any
+from .config import PATH
 
-HASH = lambda x: (hashlib.sha1(x.encode())).hexdigest()
+from typing import List, Tuple, Optional, Any
 
-DATABASE = f'users.db'
-TABLE = "Users"
+UHASH = lambda x: (hashlib.sha1(x.encode())).hexdigest()
+
+DATABASEUSER = os.path.join(PATH, "users.db")
+TABLEUSER = "Users"
 
 def drop(table:str)->sqlite3.Cursor:
 	return request(f"DROP TABLE IF EXISTS {table};", False)
@@ -30,45 +33,52 @@ def select(table:str, value:str)->sqlite3.Cursor:
 	return request(value, True)
 	
 
-def request(value:str, verbose:bool)->sqlite3.Cursor:
-	db = sqlite3.connect(DATABASE)
+def request(value:str, verbose:bool)->List[Tuple[Any]]: #sqlite3.Cursor:
+	db = sqlite3.connect(DATABASEUSER)
 	cursor = db.cursor()
 	
 	rows = cursor.execute(value)
-	if verbose:
-		for row in rows:
-			print(f"\n{row}")
+	x = list(rows)
+	#if verbose:
+		#for row in rows:
+			#print(f"\n{row}")
+	
 	db.commit()
 	db.close()
-	return rows	
+	return x	
 
 
 	
-				
 		
 if __name__ == "__main__":
 
 	
-	
-	drop(TABLE)
-	create(TABLE,"Hash, Email, Username, Password")
+	"""
+	drop(TABLEUSER)
+	create(TABLEUSER,"Hash, Email, Username, Password")
 
 	username = "smililly"
 	email = "smililly@yahoo.com"
 	password = "smililly<3LOVEsU"
-	insert(TABLE, (HASH(email), email, username, HASH(password)))
+	insert(TABLEUSER, (UHASH(email), email, username, UHASH(password)))
+	
+	
+	username = "summer85"
+	email = "summer.85@yahoo.com"
+	password = "summer:)85"
+	insert(TABLEUSER, (UHASH(email), email, username, UHASH(password)))
+	"""
 	
 	# Pays, Region, Department, Town
-	select(TABLE, f'''SELECT * FROM {TABLE}''')
+	select(TABLEUSER, f'''SELECT * FROM {TABLEUSER}''')
 
-
-	"""
-	insert(table, ('Addr1', 100, 200.4))
-	select(table, f"SELECT * FROM {table}")
-	delete(table, "Address = 'Addr1'")
-	select(table, f"SELECT * FROM {table}")
+"""
+	insert(TABLE, ('Addr1', 100, 200.4))
+	select(TABLE, f"SELECT * FROM {table}")
+	delete(TABLE, "Address = 'Addr1'")
+	select(TABLE, f"SELECT * FROM {table}")
 		
-	drop(table)
-	"""	
+	drop(TABLE)
+"""	
 
 

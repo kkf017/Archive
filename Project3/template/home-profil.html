@@ -20,12 +20,12 @@
 	.fa-anchor,.fa-coffee {font-size:200px}
 	
 	
-	header{
-		  background-image: url('../static/img/books-on-grass-2.jpg');
+	/*header{
+		  background-image: url('../static/img/home1.jpeg');
 		   background-repeat: no-repeat;
 		  background-attachment: fixed;
 		  background-size: cover; /*100% 100%;
-		}
+		}*/
 	</style>
 </head>
 
@@ -34,12 +34,24 @@
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-light-grey w3-card w3-left-align w3-medium">
+  <div class="w3-purple w3-card w3-left-align w3-medium">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-purple w3-medium" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
     <a href="/" class="fa fa-home w3-bar-item w3-button w3-padding-large w3-pink"></a>
+    
+    <input class="w3-border" name="search-bar" type="text" id="search-bar" placeholder="Address" style="height:27px;width: 345px">
+    
+    <select class="w3-select w3-border w3-purple" name="search-radius" id="search-radius" style="padding:28px height:15px;width: 65px">
+	    <option value="10">10 km</option>
+	    <option value="20">20 km</option>
+	    <option value="30">30 km</option>
+	    <option value="30">50 km</option>
+	  </select>
+    
+     <a href="/unknown/" class="fa fa-search w3-bar-item w3-button w3-padding-large w3-purple"></a>
 
-    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-right w3-text-black"><i class=""></i>Login</b></a>
+
+    <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-right w3-text-white"><i class=""></i>Logout</b></a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -48,9 +60,11 @@
   </div>
 </div>
 
-<!-- Header -->
+<!------------------------------------------------------------------------>
+
+
 <header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
-   <h1 class="w3-margin w3-jumbo">One Book On The Road</h1>
+  <h1 class="w3-margin w3-jumbo">One Book On The Road</h1>
   <p class="w3-xlarge">Find the nearest book box !</p>
   
   <form action="/location/" enctype="multipart/form-data" method="post">
@@ -59,7 +73,7 @@
                 <input class="w3-border" name="search-addr" type="text" id="search-addr" placeholder="Address" style="height:35px;width: 425px">
            
             
-             <select class="w3-select w3-border w3-white" name="search-radius" id="search-radius" style="padding:128px height:25px;width: 65px">
+           <select class="w3-select w3-border w3-white" name="search-radius" id="search-radius" style="padding:128px height:25px;width: 65px">
 	    <option value="10">10 km</option>
 	    <option value="20">20 km</option>
 	    <option value="30">30 km</option>
@@ -68,33 +82,13 @@
             </div>
         </div>
   
-  	<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Apply</button>
- 
+  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Search</button>
+  
   </form>
 </header>
 
 
-<!---------------------------------------------------------------------------------------->
-
-<div class="w3-container w3-light-grey w3-padding-64 w3-xxlarge" id="search-location">
-  <div class="w3-content">
-  
-    <!--<h3 class="w3-center w3-jumbo" style="margin-bottom:64px">Find your place !</h3>-->
-  
-     {% for obj in result.result %}
-      <form action="place?id={{obj.Hash}}" enctype="multipart/form-data" method="post">
-     <div class="w3-container w3-padding-32 w3-white">
-      <span class="w3-right w3-tag w3-purple w3-round w3-medium">{{obj.distance}} km</span>
-      <h4><b>{{ obj.Address}}</b></h4>
-      <button class="w3-right w3-button w3-margin-bottom w3-small w3-dark-grey">Let's see ! >></button>      
-      </div><br>
-      </form>
-      {% endfor %}    
-  </div>
-</div>
-
-
-<!---------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------>
 
 
 <!-- Footer -->

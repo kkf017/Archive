@@ -3,17 +3,7 @@ import flask
 from services.config import * 
 from services.calculation import *
 
-#https://www.boites-a-livres.fr/
-#https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/
 
-
-# manage PATH of database - geographic.db, users.db (move file)
-
-
-@app.route("/")
-def home()->str:
-	# remove all files from ../static/maps	
-	return flask.render_template("home.html")	
 
 
 @app.route("/location/", methods=['GET','POST']) # request
@@ -50,8 +40,6 @@ def request()->str:
 	return flask.render_template("request.html", result = result)
 
 
-
-
 @app.route("/search/place", methods=['POST'])
 def SearchPlace()->str:
 	result = searchID(flask.request.args.get('id'))
@@ -66,8 +54,6 @@ def RequestPlace()->str:
 def locationPlace()->str:
 	result = searchID(flask.request.args.get('id'))
 	return flask.render_template("place.html", result = result[0])
-
-
 
 
 @app.route("/contact/", methods=['POST'])
@@ -86,10 +72,3 @@ def unknown()->str:
 def locationUnknown()->str:
 	print(searchID(flask.request.args.get('id')))
 	return flask.render_template("unknown.html")
-
-	
-	
-if __name__ == "__main__":
-
-	app.run(debug=True)
-	#app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 4444)))

@@ -1,12 +1,5 @@
-# database - calculation 
 from .config import *
-from .database import *
-from .databasebis import *
-from .calculation import *
-from .geography import Location, coordinates, euclidean, mappy
+from .maps import *
+from .users import *
 
 
-# services (https request)
-from .page import *
-from .login import *
-from .account import *

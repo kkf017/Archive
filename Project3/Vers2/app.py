@@ -1,11 +1,11 @@
 import flask
 
 from services.config import * 
-from services.calculation import *
+from services.maps.calculation import *
 
-from services.page import *
-from services.login import *
-from services.account import *
+from services.maps.MapsService import *
+from services.users.UserLoginService import *
+from services.users.UserAccountService import *
 
 #https://www.boites-a-livres.fr/
 #https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/

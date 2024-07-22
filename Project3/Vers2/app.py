@@ -5,6 +5,7 @@ from services.calculation import *
 
 from services.page import *
 from services.login import *
+from services.account import *
 
 #https://www.boites-a-livres.fr/
 #https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/
@@ -12,6 +13,9 @@ from services.login import *
 
 # manage PATH of database - geographic.db, users.db (move file)
 
+
+# RESTRUCT code - with comments (organize)
+ 
 
 @app.route("/")
 def home()->str:

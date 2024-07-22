@@ -32,12 +32,14 @@
 
 <body>
 
+
+
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-light-grey w3-card w3-left-align w3-medium">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-purple w3-medium" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
-     <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-pink w3-hover-white" title="home"><i class="fa fa-home"></i></a>
+     <a href="/uid?id={{user.hash}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-pink w3-hover-white" title="home"><i class="fa fa-home"></i></a>
     
      <a href="/unknown/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
   
@@ -55,20 +57,10 @@
     </div>
   </div>
     
-    <!--<input class="w3-border w3-padding-large" name="search-bar" type="text" id="search-bar" placeholder="Address" style="height:20px;width: 345px">
     
-    <select class="w3-select w3-border w3-purple" name="search-radius" id="search-radius" style="padding:2;height:40px;width: 65px">
-	    <option value="10">10 km</option>
-	    <option value="20">20 km</option>
-	    <option value="30">30 km</option>
-	    <option value="30">50 km</option>
-	  </select>
-    
-     <a href="/unknown/" class="fa fa-search w3-bar-item w3-button w3-padding-large w3-purple"></a>-->
+   <a href="/logout/" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Logout</b></a>
 
-   <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Contact</b></a>
-
-    <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Logout</b></a>
+    <a href="/unknown" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Contact</b></a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -80,29 +72,6 @@
 <!------------------------------------------------------------------------>
 
 
-<header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">One Book On The Road</h1>
-  <p class="w3-xlarge">Find the nearest book box !</p>
-  
-  <form action="/location/" enctype="multipart/form-data" method="post">
-      <div class="w3-row w3-section">
-            <div class="w3-rest" align = "center">
-                <input class="w3-border" name="search-addr" type="text" id="search-addr" placeholder="Address" style="height:35px;width: 425px">
-           
-            
-           <select class="w3-select w3-border w3-white" name="search-radius" id="search-radius" style="padding:128px height:25px;width: 65px">
-	    <option value="10">10 km</option>
-	    <option value="20">20 km</option>
-	    <option value="30">30 km</option>
-	    <option value="30">50 km</option>
-	  </select>
-            </div>
-        </div>
-  
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Search</button>
-  
-  </form>
-</header>
 
 
 <!------------------------------------------------------------------------>

@@ -26,7 +26,9 @@ def login()->str:
 	
 @app.route("/user/<idt>", methods=['GET','POST'])
 def user(idt:str)->str:
-	return flask.render_template("home-profil.html", msg="")
+	user = {}
+	user = getUserInfo(idt)
+	return flask.render_template("home-profil.html", user=user)
 
 
 

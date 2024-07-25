@@ -1,7 +1,7 @@
 import os
 import flask
 
-PATH = "/home/kkf/Repositories/Archive/Project3/Vers2" # path of your app
+PATH = "/home/ksys/Documents/Project4/" # path of your app
 
 
 IMG_ALLOWED = {'png', 'jpg', 'jpeg', 'JPG'}#'JPG', 'gif'}

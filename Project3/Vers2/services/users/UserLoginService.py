@@ -4,9 +4,9 @@ from services.config import *
 from services.users.management import *
 
 
-@app.route("/home/", methods=['GET','POST'])
+@app.route("/log/", methods=['GET','POST'])
 def hello()->str:	
-	return flask.redirect(flask.url_for("login")) #flask.render_template("home-bis.html", msg="")
+	return flask.redirect(flask.url_for("login"))
 	
 
 @app.route("/login/", methods=['GET','POST'])
@@ -16,12 +16,12 @@ def login()->str:
 		password = flask.request.form["password"]
 		flag = getUser(email, password)
 		if flag == "":
-			return flask.render_template("home-bis.html", msg="Email, or password not valid.")
+			return flask.render_template("home-profil.html", msg="Email, or password not valid.")
 			
 		# add forget your password ?
 		return flask.redirect(flask.url_for("user", idt=flag))
 		 
-	return flask.render_template("home-bis.html", msg="")
+	return flask.render_template("login.html", msg="")
 
 	
 @app.route("/user/<idt>", methods=['GET','POST'])
@@ -77,9 +77,6 @@ def logout()->str:
 	return flask.redirect(flask.url_for("hello"))	
 	
 
-@app.route("/unknown/", methods=['POST'])
-def unknownbis()->str:
-	return flask.render_template("unknown.html")
 
 
 

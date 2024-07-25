@@ -5,23 +5,35 @@ from services.maps.calculation import *
 
 
 
-
-@app.route("/location/", methods=['GET','POST']) # request
-def location()->str:
+@app.route("/location", methods=['GET','POST'])
+def location()->str:		
 	if flask.request.method == 'POST':	
 		result = sphere(flask.request.form["search-addr"], float(flask.request.form["search-radius"]))
+		
+	if flask.request.args.get('uid') != None:
+		value = {}
+		value["uid"] = flask.request.args.get('uid')
+		value["result"] = result
+		return flask.render_template("./profil/profil-location.html", value = value)
+		
 	return flask.render_template("location.html", result = result)
 	
 
-@app.route("/search/", methods=['POST']) # search
+@app.route("/search/", methods=['GET','POST']) # search
 def search()->str:
+	result = {}
 	if flask.request.method == 'POST':	
-		result = fill()	
+		result = fill()
+	if flask.request.args.get('uid') != None:
+		value = {}
+		value["uid"] = flask.request.args.get('uid')
+		value["result"] = result
+		return flask.render_template("./profil/profil-search.html", value = value)
 	return flask.render_template("search.html", result = result)	
 
 
-@app.route("/request/", methods=['POST']) # searchit
-def request()->str:
+@app.route("/request", methods=['GET','POST'])
+def request()->str:		
 	key, value = (None, None)
 
 	if not flask.request.form["filter-country"] == "None":
@@ -37,11 +49,20 @@ def request()->str:
 		key, value = ("Town", flask.request.form["filter-town"])
 
 	result = filters(key, value)
+	if flask.request.args.get('uid') != None:
+		value = {}
+		value["uid"] = flask.request.args.get('uid')
+		value["result"] = result
+		return flask.render_template("./profil/profil-request.html", value = value)
+		
 	return flask.render_template("request.html", result = result)
+	
 
 
-@app.route("/search/place", methods=['POST'])
+@app.route("/search/place", methods=['GET','POST'])
 def SearchPlace()->str:
+	if flask.request.args.get('uid') != None:
+		return f"Hello from SearchPlace user {flask.request.args.get('uid')} & place {flask.request.args.get('id')}"
 	result = searchID(flask.request.args.get('id'))
 	return flask.render_template("place.html", result = result[0])
 	
@@ -54,11 +75,26 @@ def RequestPlace()->str:
 def locationPlace()->str:
 	result = searchID(flask.request.args.get('id'))
 	return flask.render_template("place.html", result = result[0])
+	
+	
+@app.route("/place", methods=['GET','POST'])
+def placeUI()->str:
+	result = searchID(flask.request.args.get('id'))
+	if flask.request.args.get('uid') != None:
+		value = {}
+		value["uid"] = flask.request.args.get('uid')
+		value["result"] = result[0]
+		return flask.render_template("./profil/profil-place.html", value = value)
+	return flask.render_template("place.html", result = result[0])
 
 
-@app.route("/contact/", methods=['POST'])
+@app.route("/contact/", methods=['GET','POST'])
 def contact()->str:
-	return flask.render_template("contact.html")
+	uid = ""
+	if flask.request.args.get('uid') != None:
+		uid = flask.request.args.get('uid')
+		return flask.render_template("./profil/profil-contact.html", uid=uid)
+	return flask.render_template("contact.html", uid=uid)
 	
 @app.route("/send/", methods=['POST'])
 def send()->str:
@@ -70,5 +106,4 @@ def unknown()->str:
 	
 @app.route("/location/unknown", methods=['POST'])
 def locationUnknown()->str:
-	print(searchID(flask.request.args.get('id')))
 	return flask.render_template("unknown.html")

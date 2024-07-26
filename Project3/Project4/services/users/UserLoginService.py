@@ -4,8 +4,10 @@ from services.config import *
 from services.users.management import *
 
 
+###################################################################################################################
+
 @app.route("/log/", methods=['GET','POST'])
-def hello()->str:	
+def log()->str:	
 	return flask.redirect(flask.url_for("login"))
 	
 
@@ -21,7 +23,7 @@ def login()->str:
 		# add forget your password ?
 		return flask.redirect(flask.url_for("user", idt=flag))
 		 
-	return flask.render_template("login.html", msg="")
+	return flask.render_template(os.path.join(TEMPLATE, "/login/login.html"), msg="")
 
 	
 @app.route("/user/<idt>", methods=['GET','POST'])
@@ -31,11 +33,13 @@ def user(idt:str)->str:
 	return flask.render_template("home-profil.html", user=user)
 
 
+##################################################################################################################	
+
 
 @app.route("/registration/", methods=['POST'])
-def registrationbis()->str:
+def registration()->str:
 	return flask.redirect(flask.url_for("register")) 
-	
+
 
 @app.route("/register/", methods=['GET','POST'])
 def register()->str:
@@ -49,16 +53,16 @@ def register()->str:
 		check = flask.request.form["password-check"]
 		
 		if exists("Email", email, username):
-			return flask.render_template("register.html", msg="An account already exists.")
+			return flask.render_template(os.path.join(TEMPLATE, "/login/register.html"), msg="An account already exists.")
 		
 		if exists("Email", email):
-			return flask.render_template("register.html", msg="This email is already used.")
+			return flask.render_template(os.path.join(TEMPLATE, "/login/register.html"), msg="This email is already used.")
 		
 		if exists("Username", username):
-			return flask.render_template("register.html", msg="This username is already used.")
+			return flask.render_template(os.path.join(TEMPLATE, "/login/register.html"), msg="This username is already used.")
 			
 		if not (password == check):
-			return flask.render_template("register.html", msg="Password is not valid.")
+			return flask.render_template(os.path.join(TEMPLATE, "/login/register.html"), msg="Password is not valid.")
 		
 		# add password verification - at least one upper, one digit, one symbol
 			# https://www.geeksforgeeks.org/password-validation-in-python/
@@ -68,9 +72,10 @@ def register()->str:
 		# add to database
 		addUser(email, username, password)
 		return flask.render_template("unknown.html", msg="")
-	return flask.render_template("register.html", msg="")
+	return flask.render_template(os.path.join(TEMPLATE, "/login/register.html"), msg="")
 	
 
+###################################################################################################################
 
 @app.route("/logout/", methods=['GET','POST'])
 def logout()->str:

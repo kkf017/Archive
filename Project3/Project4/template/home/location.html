@@ -85,7 +85,7 @@
 <div class="w3-container w3-light-grey w3-padding-64 w3-xxlarge" id="search-location">
   <div class="w3-content">
 
-     {% for obj in result.result %}
+     {% for obj in value.result.result %}
       <form action="place?id={{obj.Hash}}" enctype="multipart/form-data" method="post">
      <div class="w3-container w3-padding-32 w3-white">
       <span class="w3-right w3-tag w3-purple w3-round w3-medium">{{obj.distance}} km</span>

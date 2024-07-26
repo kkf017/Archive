@@ -71,7 +71,7 @@ def searchID(value:str):
 		result.append(new)
 	db.commit()
 	db.close()
-	return result
+	return result[0]
 
 def sphere(location:str, radius:float)->Dict[str, List[Dict[str, Union[str, float]]]]:
 	""" Function to find th nearest places - according to a radius -."""

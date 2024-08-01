@@ -89,7 +89,7 @@
       <div id =”my-map” class="w3-container w3-white w3-margin w3-padding-large"></div>
       <div class="w3-container w3-white w3-margin w3-padding-large">
       		<!--[if !IE]> <-->
-		<object type="text/html" data="../static/maps/{{value.result.Hash}}.html" width="965" height="525">
+		<object type="text/html" data="../static/maps/{{value.result.Hash}}.html" width="100%" height="525"> <!-- width="965" height="525">-->
 		<p>backup content</p>
 		</object>
 		<!--> <![endif]-->
@@ -108,10 +108,11 @@
           <p></p>
           <div class="w3-justify">
           <p></p>
-          <p class="w3-left"><button class="w3-button w3-white w3-border"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
-          <form action="unknown?id={{value.result.Hash}}" enctype="multipart/form-data" method="post">
-		  <p class="w3-right"><button class="w3-button w3-dark-grey" id="myBtn"><b>See on map ! >></b> <span class="w3-tag w3-white">1</span></button></p>
-		  <p class="w3-clear"></p>
+          <!--<form action="unknown?id={{value.result.Hash}}" enctype="multipart/form-data" method="post">-->
+          <form action="/log" enctype="multipart/form-data" method="post">
+          	<p class="w3-center"><button class="w3-button w3-white w3-border"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+		  <!--<p class="w3-right"><button class="w3-button w3-dark-grey" id="myBtn"><b>See on map ! >></b> <span class="w3-tag w3-white">1</span></button></p>
+		  <p class="w3-clear"></p>-->
 	</form>
        
         </div>

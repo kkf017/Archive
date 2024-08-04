@@ -27,6 +27,11 @@ from services.maps.LocationService import *
 # RESTRUCT code - with comments (organize) - Revoir HTML code - avec import de code
 
 
+
+# Set size for favorites place - in account
+
+
+
 @app.route("/")
 def home()->str:
 	# remove all files from ../static/maps	

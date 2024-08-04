@@ -38,11 +38,11 @@ def FillTableUsers():
 
 if __name__ == "__main__":
 	
-	CreateTableLocation()
-	CreateTableUsers()
+	#CreateTableLocation()
+	#CreateTableUsers()
 	
-	FillTableLocation()
-	FillTableUsers()
+	#FillTableLocation()
+	#FillTableUsers()
 	
 	for x in select(f'''SELECT * FROM {LOCATION}'''):
 		print("\n",x)

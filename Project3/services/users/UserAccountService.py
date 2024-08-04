@@ -1,7 +1,7 @@
 import flask
 
 from services.config import * 
-from services.maps.calculation import *
+import services.maps.calculation
 import services.users.management 
 
 
@@ -14,7 +14,8 @@ def account()->str:
 	"""	
 	uid = flask.request.args.get('uid')
 	user = services.users.management.getUserInfo("Hash",uid)
-	# get favorites location
+	# get favorites location - searchID(value:str)
+	user["favorites"] = [services.maps.calculation.searchID(value) for value in user["favorites"]]
 	return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user-bis.html"), user = user)			
 	#return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user.html"), user = user)
 	

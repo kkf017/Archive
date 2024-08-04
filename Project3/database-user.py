@@ -44,8 +44,8 @@ if __name__ == "__main__":
 	#FillTableLocation()
 	#FillTableUsers()
 	
-	for x in select(f'''SELECT * FROM {LOCATION}'''):
-		print("\n",x)
+	#for x in select(f'''SELECT * FROM {LOCATION}'''):
+		#print("\n",x)
 
 	print("\n\n\n")
 	input()

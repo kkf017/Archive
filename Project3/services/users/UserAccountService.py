@@ -2,7 +2,7 @@ import flask
 
 from services.config import * 
 from services.maps.calculation import *
-from services.users.management import *
+import services.users.management 
 
 
 
@@ -13,7 +13,8 @@ def account()->str:
 			http://127.0.0.1:5000/profil?uid=daaab105702e8d6ffd23ad6f0f7a50de4c0eda8b
 	"""	
 	uid = flask.request.args.get('uid')
-	user = getUserInfo("Hash",uid)
+	user = services.users.management.getUserInfo("Hash",uid)
+	# get favorites location
 	return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user-bis.html"), user = user)			
 	#return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user.html"), user = user)
 	
@@ -25,7 +26,7 @@ def account1()->str:
 			http://127.0.0.1:5000/acc/user?uid=daaab105702e8d6ffd23ad6f0f7a50de4c0eda8b
 	"""	
 	uid = flask.request.args.get('uid')
-	user = getUserInfo("Hash",uid)			
+	user = services.users.management.getUserInfo("Hash",uid)			
 	return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user-updt-username.html"), user = user)
 
 @app.route("/acc/user/updt", methods=['GET','POST'])
@@ -35,8 +36,8 @@ def account4()->str:
 			http://127.0.0.1:5000/acc/user/updt?uid=daaab105702e8d6ffd23ad6f0f7a50de4c0eda8b
 	"""	
 	uid = flask.request.args.get('uid')
-	uid = updateUser(uid, "Username", flask.request.form["new-username"])	
-	user = getUserInfo("Hash", uid)
+	uid = services.users.management.updateUser(uid, "Username", flask.request.form["new-username"])	
+	user = services.users.management.getUserInfo("Hash", uid)
 	return flask.redirect(flask.url_for("account", uid = user["hash"]))
 		
 
@@ -48,7 +49,7 @@ def account2()->str:
 			http://127.0.0.1:5000/acc/email?uid=daaab105702e8d6ffd23ad6f0f7a50de4c0eda8b
 	"""	
 	uid = flask.request.args.get('uid')
-	user = getUserInfo("Hash",uid)			
+	user = services.users.management.getUserInfo("Hash",uid)			
 	return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user-updt-email.html"), user = user)
 
 
@@ -66,8 +67,8 @@ def account5()->str:
 		
 	# Verify email - (with email verification)
 	
-	uid = updateUser(uid, "Email", flask.request.form["new-email"])	
-	user = getUserInfo("Hash", uid)
+	uid = services.users.management.updateUser(uid, "Email", flask.request.form["new-email"])	
+	user = services.users.management.getUserInfo("Hash", uid)
 	return flask.redirect(flask.url_for("account", uid = user["hash"]))
 
 
@@ -80,7 +81,7 @@ def account3()->str:
 			http://127.0.0.1:5000/acc/password?uid=daaab105702e8d6ffd23ad6f0f7a50de4c0eda8b
 	"""	
 	uid = flask.request.args.get('uid')
-	user = getUserInfo("Hash", uid)			
+	user = services.users.management.getUserInfo("Hash", uid)			
 	return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user-updt-password.html"), user = user)
 	
 
@@ -96,8 +97,8 @@ def account6()->str:
 	if password1 != password2:
 		return f"Hello from UPDT Email, with {password1} and {password2}"
 		
-	uid = updateUser(uid, "Password", flask.request.form["new-password"])	
-	user = getUserInfo("Hash", uid)
+	uid = services.users.management.updateUser(uid, "Password", flask.request.form["new-password"])	
+	user = services.users.management.getUserInfo("Hash", uid)
 	return flask.redirect(flask.url_for("account", uid = user["hash"]))	
 
 

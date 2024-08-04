@@ -1,8 +1,8 @@
 import os
 import flask
 
-from services.config import * 
-from services.maps.calculation import *
+from services.config import *
+import services.maps.calculation
 
 from typing import Dict, Any
 
@@ -11,13 +11,13 @@ from typing import Dict, Any
 def location(uid:str, addr:str, radius:float)->Dict[str, Any]:
 	value = {}
 	value["uid"] = uid
-	value["result"] = sphere(addr, radius)
+	value["result"] = services.maps.calculation.sphere(addr, radius)
 	return value
 	
 def place(uid:str, ids:str)->Dict[str, Any]:
 	value = {}
 	value["uid"] = uid
-	value["result"] = searchID(ids)
+	value["result"] = services.maps.calculation.searchID(ids)
 	return value
 
 @app.route("/location/", methods=['GET','POST'])
@@ -77,7 +77,7 @@ def location4()->str:
 def filt(uid:str, key:str, value:str)->Dict[str, Any]:
 	res = {}
 	res["uid"] = uid
-	res["result"] = filters(key, value)
+	res["result"] = services.maps.calculation.filters(key, value)
 	return res
 
 

@@ -14,21 +14,17 @@ from services.maps.LocationService import *
 
 # manage PATH of app - in  config.py
 
-# manage PATH of database - geographic.db, users.db (move file)
-
 # Finir navbar on small screen, finir Login - verification email (login, change email...)
+
+# Check create account / login - and manage errors
 
 # Finir create account - chose your icon, ...etc
 
+# Add email - verification
+
 # Finir Forgot password
 
-# RESTRUCT code - with comments (organize)
- 
-# Revoir HTML code - avec import de code
-
-# path - avec ou sans id
-
-# Complete login
+# RESTRUCT code - with comments (organize) - Revoir HTML code - avec import de code
 
 
 @app.route("/")

@@ -1,59 +1,34 @@
 import csv
 import math
 
-from services.maps.database import *
+from services.database.database import *
 from services.maps.geography import Location, coordinates, euclidean, mappy
 
 from typing import List, Dict, Union
 
-
-def fill()->List[str]:
-	""" Function to get list of all places."""
-	request = f"SELECT * FROM {TABLE} ORDER BY Region,Department,Municipality,Town;"
-	
-	result = []
-	db = sqlite3.connect(DATABASE)
-	cursor = db.cursor()
-	rows = cursor.execute(request)
-	for row in rows:
-		new = {}
-		new["Hash"] = row[0]
-		new["Address"] = row[1]
-		result.append(new)
-	db.commit()
-	db.close()
-	return result
 	
 	
 def filters(key:str, value:str)->List[str]:	
 	""" Function to get paces accordind to filters."""
-	request = f'''SELECT * FROM {TABLE} WHERE {key}="{value}" ORDER BY Region,Department,Municipality,Town;'''
+	request = f'''SELECT * FROM {LOCATION} WHERE {key}="{value}" ORDER BY Region,Department,Municipality,Town;'''
 	
 	if key == None and value == None:
 		return []
-	
+		
 	result = []
-	db = sqlite3.connect(DATABASE)
-	cursor = db.cursor()
-	rows = cursor.execute(request)
-	for row in rows:
+	for row in select(request):
 		new = {}
 		new["Hash"] = row[0]
 		new["Address"] = row[1]
 		result.append(new)
-	db.commit()
-	db.close()
+		
 	return result
 
 def searchID(value:str):
 	""" Function to search a place and get its map."""
-	request = f'''SELECT * FROM {TABLE} WHERE Hash="{value}";'''
-	
+	request = f'''SELECT * FROM {LOCATION} WHERE Hash="{value}";'''
 	result = []
-	db = sqlite3.connect(DATABASE)
-	cursor = db.cursor()
-	rows = cursor.execute(request)
-	for row in rows:
+	for row in select(request):
 		new = {}
 		new["Hash"] = row[0]
 		new["Address"] = row[1]
@@ -69,8 +44,7 @@ def searchID(value:str):
 		
 		mappy(row[0], (row[9], row[10]))
 		result.append(new)
-	db.commit()
-	db.close()
+		
 	return result[0]
 
 def sphere(location:str, radius:float)->Dict[str, List[Dict[str, Union[str, float]]]]:
@@ -82,21 +56,16 @@ def sphere(location:str, radius:float)->Dict[str, List[Dict[str, Union[str, floa
 	
 	const = loc1.nearest(radius)
 	rad = math.pi / 180
-	request = f"SELECT Hash, Name, Latitud, Longitud FROM {TABLE} a WHERE ( {const} <= {loc1.x} * cos(a.latitud * {rad}) * cos(a.longitud * {rad}) + {loc1.y} * cos(a.latitud * {rad}) * sin(a.longitud * {rad}) + {loc1.z} * sin(a.latitud * {rad}) )"
+	request = f"SELECT Hash, Name, Latitud, Longitud FROM {LOCATION} a WHERE ( {const} <= {loc1.x} * cos(a.latitud * {rad}) * cos(a.longitud * {rad}) + {loc1.y} * cos(a.latitud * {rad}) * sin(a.longitud * {rad}) + {loc1.z} * sin(a.latitud * {rad}) )"
 	
 	result = []
-	db = sqlite3.connect(DATABASE)
-	cursor = db.cursor()
-	rows = cursor.execute(request)
-	for row in rows:
+	for row in select(request):
 		new = {}
 		loc2 = Location(row[1], float(row[2]), float(row[3]))
 		new["Hash"] = row[0]
 		new["Address"] = row[1]
 		new["distance"] = '{:.2f}'.format(euclidean(loc1,loc2))
 		result.append(new)
-	db.commit()
-	db.close()
 	
 	solution = {}
 	solution["Location"] = loc1.addr

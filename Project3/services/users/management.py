@@ -1,9 +1,10 @@
-from services.users.databasebis import *
+from services.database.database import *
 
 from typing import Tuple, Dict
 
-def getUser(email:str, password:str)->str:
-	x = select(USERS, f'''SELECT * FROM {USERS} WHERE Email="{email}"''')
+def loginUser(email:str, password:str)->str:
+	""" Function to ... """
+	x = select(f'''SELECT * FROM {USERS} WHERE Email="{email}"''')
 	for row in x:
 		if row[3] == HASH(password):
 			return row[0]
@@ -11,7 +12,8 @@ def getUser(email:str, password:str)->str:
 
 
 def getUserInfo(key:str, value:str)->Dict[str, str]:
-	x = select(USERS, f'''SELECT * FROM {USERS} WHERE {key}="{value}"''')
+	""" Function to get informations of a user. """
+	x = select(f'''SELECT * FROM {USERS} WHERE {key}="{value}"''')
 	user = {}
 	if x != []:
 		x = x[0]
@@ -19,12 +21,17 @@ def getUserInfo(key:str, value:str)->Dict[str, str]:
 		user["email"] = x[1]
 		user["username"] = x[2]
 		user["password"] = x[3]
+	x = select(f'''SELECT * FROM {FAVORITES} WHERE User="{user["hash"]}"''')
+	if x != []:
+		pass
+	# user["favorites"] = [] # list of favorites
 	return user
 	
 	
 
 def exists(key:str, value:str, *args:Tuple[str])->bool:
-	x = select(USERS, f'''SELECT * FROM {USERS} WHERE {key}="{value}"''')
+	""" Function to check if a user exists (in database). """
+	x = select(f'''SELECT * FROM {USERS} WHERE {key}="{value}"''')
 	if key == "Email" and args != ():
 		for row in x:
 			if row[2] == args[0]:
@@ -33,33 +40,35 @@ def exists(key:str, value:str, *args:Tuple[str])->bool:
 	if (key == "Email" and args == ()) or (key == "Username"):
 		if x != []:
 			return True
-
 	return False
 
 
 
-def addUser(email:str, username:str, password:str)->None:
+def createUser(email:str, username:str, password:str)->None:
+	""" Function to add a user (in database). """
 	insert(USERS, (HASH(email), email, username, HASH(password)))
+	
 
 def updateUser(uid:str, key:str, value:str)->str:
+	""" Function to update user informations (in database). """
 	def UpdateUsername(uid:str, key:str, value:str)->str:
 		x = f'''UPDATE {USERS} SET {key} = "{value}" WHERE Hash = "{uid}";'''
-		x = request(x, False)
+		x = request(x)
 		return uid
 		
 	def UpdateEmail(uid:str, key:str, value:str)->str:
 		new = HASH(value)
 		x = f'''UPDATE {USERS} SET {key} = "{value}", Hash = "{new}" WHERE Hash = "{uid}";'''
 		# change hash also for FAVORITES (table)
-		x = request(x, False)
+		x = request(x)
 		x = f'''UPDATE {FAVORITES} SET {User} = "{new}" WHERE Hash = "{uid}";'''
-		x = request(x, False)
+		x = request(x)
 		return new
 		
 	def UpdatePassword(uid:str, key:str, value:str)->str:
 		new = HASH(value)
 		x = f'''UPDATE {USERS} SET {key} = "{new}" WHERE Hash = "{uid}";'''
-		x = request(x, False)
+		x = request(x)
 		return uid
 
 	if key == "Email":
@@ -70,4 +79,8 @@ def updateUser(uid:str, key:str, value:str)->str:
 
 
 def favorites(uid:str, ids:str)->None:
+	""" Function to add a favorite Location for a user. """
 	insert(FAVORITES, (uid, ids))
+
+
+

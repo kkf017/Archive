@@ -67,7 +67,9 @@ def location4()->str:
 	uid = flask.request.args.get('uid')
 	value = place(uid, flask.request.args.get('id'))
 	value["id"] = flask.request.args.get('id')
+	print(f"From location4, uid {flask.request.args.get('uid')} and id {flask.request.args.get('id')}")
 	if uid != None:
+		print(f"LOCATION4")
 		return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-place.html"), value = value)
 	return flask.render_template(os.path.join(TEMPLATE, "/home/place.html"), value = value)
 		

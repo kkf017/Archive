@@ -9,5 +9,5 @@ def place1()->str:
 	ids = flask.request.args.get('id')
 	# add Like in database - Table
 	services.users.management.favorites(uid, ids)
-	return flask.redirect(flask.url_for("location4", uid = uid, id = ids))
+	return flask.redirect(flask.url_for("location4", uid = flask.request.args.get('uid'), id = ids))
 

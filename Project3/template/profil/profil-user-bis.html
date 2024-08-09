@@ -151,10 +151,12 @@
               <h6 class="w3-opacity">One Book On The Road</h6>
               
               
-              <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
-              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+              <!--<p contenteditable="true" class="w3-border w3-padding">Choose your favorite places !</p>-->
+              <p>Choose your favorite places !</p>
               
-              <button class="w3-right w3-button w3-margin-bottom w3-small w3-dark-grey">Let's see ! >></button>  
+              <!--<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+              
+              <button class="w3-right w3-button w3-margin-bottom w3-small w3-dark-grey">Let's see ! >></button> --> 
             </div>
           </div>
         </div>
@@ -165,15 +167,17 @@
       
       {% for obj in user.favorites %}
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <span class="w3-right w3-tag w3-purple w3-round w3-medium">km</span>
-        <span class="w3-right w3-opacity">1 min</span>
+        <!--<span class="w3-right w3-tag w3-purple w3-round w3-medium">km</span>--->
+        <!--<span class="w3-right w3-opacity">1 min</span>-->
         <!--<h4>John Doe</h4>--><br>
         <hr class="w3-clear">
         <p>{{obj.Address}}</p>
        
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+       <form action="/unknown" enctype="multipart/form-data" method="post">
+        <button type="button" class="w3-button w3-left w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>Don't like it anymore !</button> 
+       </form>
         
-         <form action="place?uid={{user.uid}}&id={{obj.Hash}}" enctype="multipart/form-data" method="post">
+         <form action="place?uid={{user.hash}}&id={{obj.Hash}}" enctype="multipart/form-data" method="post">
         <button class="w3-right w3-button w3-margin-bottom w3-small w3-dark-grey">Let's see ! >></button> 
         </form>
       </div>

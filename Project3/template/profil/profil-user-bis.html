@@ -136,34 +136,24 @@
         </div>
       </div>
       <br>
+      
+      
     </div>
     
   
   
-    <div class="w3-col m7">
+    <div class="w3-col m7"> <!-- (close favorites) --->
       <div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
-            
             <span class="w3-right w3-tag w3-purple w3-round w3-medium">km</span>
-            
               <h6 class="w3-opacity">One Book On The Road</h6>
-              
-              
-              <!--<p contenteditable="true" class="w3-border w3-padding">Choose your favorite places !</p>-->
               <p>Choose your favorite places !</p>
-              
-              <!--<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-              
-              <button class="w3-right w3-button w3-margin-bottom w3-small w3-dark-grey">Let's see ! >></button> --> 
             </div>
           </div>
         </div>
       </div>
-      
-     
-      
       
       {% for obj in user.favorites %}
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
@@ -173,7 +163,7 @@
         <hr class="w3-clear">
         <p>{{obj.Address}}</p>
        
-       <form action="/unknown" enctype="multipart/form-data" method="post">
+       <form action="/unknown/" enctype="multipart/form-data" method="post">
         <button type="button" class="w3-button w3-left w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>Don't like it anymore !</button> 
        </form>
         
@@ -182,52 +172,29 @@
         </form>
       </div>
      {% endfor %}  
-      
-      
-      
-      
-      
           
-      
-      
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="../static/img/dino1.jpeg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
-        <h4>John Doe</h4><br>
-        <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-              <img src="../static/img/dino1.jpeg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
-            </div>
-            <div class="w3-half">
-              <img src="../static/img/redpanda.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
-          </div>
-        </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
-      </div>
-     
-    </div>
+    </div> <!-- (close favorites) --->
     
     
     <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p>Upcoming Events:</p>
-          <img src="../static/img/photomania-1.jpg" alt="Forest" style="width:100%;">
+          <!--<p>Upcoming Events:</p>-->
+          <!--<img src="../static/img/photomania-1.jpg" alt="Forest" style="width:100%;">-->
           <p><strong>Holiday</strong></p>
           <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+          <!---<p><button class="w3-button w3-block w3-theme-l4">Info</button></p>-->
         </div>
       </div>
       <br>
       
+      
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p>Friend Request</p>
-          <img src="../static/img/dino1.jpeg" alt="Avatar" style="width:50%"><br>
-          <span>Jane Doe</span>
+          <p>Close Request ?</p>
+          <!--<img src="../static/img/dino1.jpeg" alt="Avatar" style="width:50%"><br>-->
+          <h5>This is my request !</h5>
+          <span>Close request ?</span>
           <div class="w3-row w3-opacity">
             <div class="w3-half">
               <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
@@ -239,6 +206,7 @@
         </div>
       </div>
       <br>
+     
      
   </div>
   

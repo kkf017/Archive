@@ -28,7 +28,9 @@ from services.maps.LocationService import *
 
 
 
-# Set size for favorites place - in account
+# Add suppress account - user
+
+# Manage if favorite is already in database -  while clicking "Like"
 
 
 

@@ -5,6 +5,8 @@ import services.maps.calculation
 import services.users.management 
 
 
+##################################################################################################################
+# Get Account page
 
 @app.route("/acc", methods=['GET','POST'])
 def account()->str:
@@ -29,6 +31,14 @@ def account1()->str:
 	uid = flask.request.args.get('uid')
 	user = services.users.management.getUserInfo("Hash",uid)			
 	return flask.render_template(os.path.join(TEMPLATE, "/profil/profil-user-updt-username.html"), user = user)
+	
+##################################################################################################################
+# Manage favorites
+
+
+
+##################################################################################################################
+# Update User informations
 
 @app.route("/acc/user/updt", methods=['GET','POST'])
 def account4()->str:
@@ -102,4 +112,4 @@ def account6()->str:
 	user = services.users.management.getUserInfo("Hash", uid)
 	return flask.redirect(flask.url_for("account", uid = user["hash"]))	
 
-
+##################################################################################################################

@@ -8,6 +8,7 @@ def place1()->str:
 	uid = flask.request.args.get('uid')
 	ids = flask.request.args.get('id')
 	# check if favorite is already in database
-	services.users.management.favorites(uid, ids)
+	if not services.users.management.exist(ids, uid):
+		services.users.management.favorites(uid, ids)
 	return flask.redirect(flask.url_for("location4", uid = flask.request.args.get('uid'), id = ids))
 

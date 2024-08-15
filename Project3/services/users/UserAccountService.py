@@ -35,7 +35,14 @@ def account1()->str:
 ##################################################################################################################
 # Manage favorites
 
-
+@app.route("/dislike", methods=['GET','POST'])
+def favorites1()->str:
+	uid = flask.request.args.get('uid')
+	ids = flask.request.args.get('id')
+	services.users.management.remove_favorite(uid, ids)
+	user = services.users.management.getUserInfo("Hash",uid)
+	return flask.redirect(flask.url_for("account", uid = user["hash"]))
+	
 
 ##################################################################################################################
 # Update User informations

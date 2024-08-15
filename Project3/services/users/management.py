@@ -27,7 +27,9 @@ def getUserInfo(key:str, value:str)->Dict[str, str]:
 		user["favorites"] = [xi[0] for xi in x]
 	return user
 	
-	
+
+##################################################################################################
+# Users	
 
 def exists(key:str, value:str, *args:Tuple[str])->bool:
 	""" Function to check if a user exists (in database). """
@@ -41,7 +43,6 @@ def exists(key:str, value:str, *args:Tuple[str])->bool:
 		if x != []:
 			return True
 	return False
-
 
 
 def createUser(email:str, username:str, password:str)->None:
@@ -78,9 +79,33 @@ def updateUser(uid:str, key:str, value:str)->str:
 	return UpdateUsername(uid, key, value)
 
 
+##############################################################################################
+# Favorites
+
+def exist(ids:str, uid:str)->bool:
+	""" Function to check if a favorite place exists (in database). """
+	x = select(f'''SELECT * FROM {FAVORITES} WHERE Location="{ids}" AND User="{uid}"''')
+	if x != []:
+		return True
+	return False
+
 def favorites(uid:str, ids:str)->None:
 	""" Function to add a favorite Location for a user. """
 	insert(FAVORITES, (uid, ids))
+	
+
+def remove_favorite(uid:str, ids:str):
+	value = f'''DELETE FROM {FAVORITES} WHERE Location="{ids}" AND User="{uid}"'''
+	if exist(ids, uid):
+		#delete(FAVORITES, f'''User="{uid}" AND Location="{ids}"''')
+		db = sqlite3.connect(DATABASE)
+		cursor = db.cursor()
+		
+		rows = cursor.execute(value)
+		x = list(rows)
+		
+		db.commit()
+		db.close()
 
 
 

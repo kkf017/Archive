@@ -32,6 +32,7 @@ from services.maps.LocationService import *
 
 # Manage if favorite is already in database -  while clicking "Like"
 
+# Create Footer
 
 
 @app.route("/")

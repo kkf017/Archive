@@ -165,6 +165,7 @@ def request2()->str:
 
 ###################################################################################################################
 
+@app.route("/contact", methods=['GET','POST'])
 @app.route("/contact/", methods=['GET','POST'])
 def contact()->str:
 	"""

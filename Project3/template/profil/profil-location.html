@@ -39,16 +39,14 @@
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-light-grey w3-card w3-left-align w3-medium">
+    
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-purple w3-medium" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
      <a href="/search?uid={{value.uid}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-pink w3-hover-white" title="home"><i class="fa fa-home"></i></a>
-    
-     <a href="/unknown/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
   
-  <a href="/acc?uid={{value.uid}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
+  <a href="/acc?uid={{value.uid}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-globe"></i></a>
   
-  <a href="/unknown/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
-  
+   <a href="/contact?uid={{value.uid}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-envelope"></i></a>
   
   <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-purple">3</span></button>     
@@ -62,13 +60,16 @@
     
    <a href="/logout/" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Logout</b></a>
 
-    <a href="/contact?uid={{value.uid}}" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Contact</b></a>
+    <!--<a href="/contact?uid={{value.uid}}" class="w3-bar-item w3-button w3-hide-small w3-right  w3-hover-white w3-text-black"><i class=""></i>Contact</b></a>-->
   </div>
   
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/search?uid={{value.uid}}" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="/acc?uid={{value.uid}}" class="w3-bar-item w3-button w3-padding-large">Account</a>
+    <a href="/contact?uid={{value.uid}}" class="w3-bar-item w3-button w3-padding-large">Contact</a>
+    <a href="/logout/" class="w3-bar-item w3-button w3-padding-large">Logout</a>
   </div>
 </div>
 <!--------------------------------------------------------------------------------------------->

@@ -1,20 +1,21 @@
 import flask
 
 from services.config import * 
-from services.maps.calculation import *
+#from services.maps.calculation import *
 
-from services.maps.MapsService import *
-from services.users.UserLoginService import *
-from services.users.UserAccountService import *
-
-from services.maps.LocationService import *
+from services.service.MapsService import *
+from services.service.UserLoginService import *
+from services.service.UserAccountService import *
+from services.service.LocationService import *
 
 #https://www.boites-a-livres.fr/
 #https://boite.a.livres.zonelivre.fr/boites-a-livres-par-departements/
 
 # manage PATH of app - in  config.py
 
-# Finir navbar on small screen, finir Login - verification email (login, change email...)
+# Finir navbar on small screen - for home, and user profil
+
+# finir Login - verification email (login, change email...)
 
 # Check create account / login - and manage errors
 
@@ -30,9 +31,9 @@ from services.maps.LocationService import *
 
 # Add suppress account - user
 
-# Manage if favorite is already in database -  while clicking "Like"
-
 # Create Footer
+
+# Change the way people can give/suppress address of book boxes
 
 
 @app.route("/")

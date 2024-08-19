@@ -23,6 +23,7 @@ def getUserInfo(key:str, value:str)->Dict[str, str]:
 		user["username"] = x[2]
 		user["password"] = x[3]
 	x = select(f'''SELECT Location FROM {FAVORITES} WHERE User="{x[0]}"''')
+	user["favorites"] = []
 	if x != []:
 		user["favorites"] = [xi[0] for xi in x]
 	return user

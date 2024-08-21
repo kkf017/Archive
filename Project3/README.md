@@ -1,5 +1,5 @@
 ## One Book On The Road
-API to finde the nearest book box (from you).
+API to find the nearest book box (from you).
 
 ### Libraries
 * Requires python>=3.5.

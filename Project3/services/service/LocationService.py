@@ -24,4 +24,6 @@ def place2()->str:
 	
 """
 	uid id ask/exchange comment 12/06/2024
+	
+	clean requests - with periods
 """

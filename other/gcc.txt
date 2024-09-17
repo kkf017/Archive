@@ -1,0 +1,229 @@
+
+
+g++ src.cpp -o src
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int a, b, c;
+cin >> a >> b >> c;
+
+cout << sum;
+
+
+string a = "";
+a.size(), to_string()
+
+class SampleClass {
+    private:
+        int val;
+    public:
+	SampleClass(int a){
+		val = a;
+	}
+        void set(int a) {
+            val = a;
+        }
+        int get() {
+            return val;
+        }
+};
+
+
+bool operator<(Box& box){
+            if(l*b*h<box.CalculateVolume()){
+                return true;
+            }
+            return false;
+        }
+
+
+
+ostream& operator<<(ostream& os, const Date& dt)
+{
+    os << dt.mo << '/' << dt.da << '/' << dt.yr;
+    return os;
+}
+
+
+
+#include <stdexcept>
+#include <limits>
+#include <iostream>
+
+using namespace std;
+
+void MyFunc(int c)
+{
+    if (c > numeric_limits< char> ::max())
+        throw invalid_argument("MyFunc argument too large.");
+    //...
+}
+
+int main()
+{
+    try
+    {
+        MyFunc(256); //cause an exception to throw
+    }
+
+    catch (invalid_argument& e)
+    {
+        cerr << e.what() << endl;
+        return -1;
+    }
+    //...
+    return 0;
+}
+
+
+
+
+Vectors
+
+    Declaration:
+
+    vector<int>v; (creates an empty vector of integers)
+
+    Size:
+
+    int size=v.size();
+
+    Pushing an integer into a vector:
+
+    v.push_back(x);(where x is an integer.The size increases by 1 after this.)
+
+    Popping the last element from the vector:
+
+    v.pop_back(); (After this the size decreases by 1)
+
+    Sorting a vector:
+
+    sort(v.begin(),v.end()); (Will sort all the elements in the vector)
+
+
+    erase(int position):
+
+    Removes the element present at position.  
+    Ex: v.erase(v.begin()+4); (erases the fifth element of the vector v)
+
+    erase(int start,int end):
+
+    Removes the elements in the range from start to end inclusive of the start and exclusive of the end.
+    Ex:v.erase(v.begin()+2,v.begin()+5);(erases all the elements from the third element to the fifth element.)
+
+
+
+Sets
+    Declaration:
+
+     set<int>s; //Creates a set of integers.
+
+     Size:
+
+     int length=s.size(); //Gives the size of the set.
+
+     Insert:
+
+     s.insert(x); //Inserts an integer x into the set s.
+
+     Erasing an element:
+
+      s.erase(val); //Erases an integer val from the set s.
+
+     Finding an element:
+
+     set<int>::iterator itr=s.find(val); //Gives the iterator to the element val if it is found otherwise returns s.end() .
+     Ex: set<int>::iterator itr=s.find(100); //If 100 is not present then
+
+
+
+MAps
+Map Template:
+
+std::map <key_type, data_type>
+
+Declaration:
+
+map<string,int>m; //Creates a map m where key_type is of type string and data_type is of type int.
+
+Size:
+
+int length=m.size(); //Gives the size of the map.
+
+Insert:
+
+m.insert(make_pair("hello",9)); //Here the pair is inserted into the map where the key is "hello" and the value associated with it is 9.
+
+Erasing an element:
+
+m.erase(val); //Erases the pair from the map where the key_type is val.
+
+Finding an element:
+
+map<string,int>::iterator itr=m.find(val); //Gives the iterator to the element val if it is found otherwise returns m.end() .
+Ex: map<string,int>::iterator itr=m.find("Maps"); //If Maps is not present as the key value then itr==m.end().
+
+Accessing the value stored in the key:
+
+To get the value stored of the key "MAPS" we can do m["MAPS"] or we can g
+
+
+
+
+Inheritance
+// Example: define member function without argument within
+// the class
+
+#include <iostream>
+using namespace std;
+
+class Person {
+	int id;
+	char name[100];
+
+public:
+	void set_p()
+	{
+		cout << "Enter the Id:";
+		cin >> id;
+		cout << "Enter the Name:";
+		cin >> name;
+	}
+
+	void display_p()
+	{
+		cout << endl <<"Id: "<< id << "\nName: " << name <<endl;
+	}
+};
+
+class Student : private Person {
+	char course[50];
+	int fee;
+
+public:
+	void set_s()
+	{
+		set_p();
+		cout << "Enter the Course Name:";
+		cin >> course;
+		cout << "Enter the Course Fee:";
+		cin >> fee;
+	}
+
+	void display_s()
+	{
+		display_p();
+		cout <<"Course: "<< course << "\nFee: " << fee << endl;
+	}
+};
+
+int main()
+{
+	Student s;
+	s.set_s();
+	s.display_s();
+	return 0;
+}
+

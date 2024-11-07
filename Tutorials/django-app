@@ -1,0 +1,76 @@
+
+Bookshell
+
+user
+Item
+
+
+
+
+https://www.w3schools.com/django/django_templates.php
+
+https://stackoverflow.com/questions/29228627/djangoget-field-values-using-views-py-from-html-form
+https://docs.djangoproject.com/en/5.1/topics/forms/
+
+Front-End
+https://saashammer.com/blog/how-to-combine-frontend-and-backend-for-python-web-developers/
+https://medium.com/@simonsruggi/react-for-beginners-dive-into-front-end-development-5c2fa4a80fdc
+https://medium.com/@bedeveloper20/to-create-the-front-end-part-or-user-interface-of-your-application-using-react-js-9399a639fe28
+
+create a front-end with React.js, Node.js, NPM Node.js
+
+
+How to install django ?
+    pip3 install Django
+
+
+Create a project
+    django-admin startproject myAppp
+
+    architecture of the project:
+        myApp
+            manage.py
+            myApp
+                __init__.py
+                asgi.py
+                settings.py
+                urls.py
+                wsgi.py
+
+Run the app
+    python3 manage.py runserver
+
+    Open in a browser 127.0.0.1:8000
+
+
+Create a service
+    python3 manage.py startapp myService
+
+    architecture of the project:
+        myApp
+            manage.py
+            myApp
+                __init__.py
+                asgi.py
+                settings.py
+                urls.py
+                wsgi.py
+            myService/
+                migrations/
+                    __init__.py
+                __init__.py
+                admin.py
+                apps.py
+                models.py
+                tests.py
+                views.py
+
+
+Django views are Python functions that take http requests and return http response, like HTML documents
+
+Return HTML templates
+    create 'templates' folder - in service
+    create html template
+    modify views.py
+    change INSTALLED_APPS in myApp/myApp/settings.py
+    run python3 manage.py migrate

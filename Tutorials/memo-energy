@@ -1,0 +1,73 @@
+
+
+
+https://www.w3schools.com/django/django_templates.php
+
+https://medium.com/@develperbilalraza/setting-up-a-django-project-with-poetry-a-step-by-step-guide-25269a5869ea
+
+
+Step by step
+
+Make sure you have poetry
+    poetry --version
+
+Make sure you have Django
+    pip3 install Django
+
+Make sure you have rest_framework
+    pip install djangorestframework
+    pip install markdown       
+    pip install django-filter 
+
+Run 
+    python3 manage.py runserver
+    or poetry ...
+
+
+
+Manual 
+
+    pip3 install poetry
+   
+
+    django-admin startproject services 
+
+    mkdir myApp && cd myApp
+    poetry init
+    poetry add Django
+    
+    poetry add djangorestframework
+
+
+    poetry run python manage.py runserver
+    poetry run python manage.py startapp EnergyResource
+
+    poetry run python3 manage.py import_energy_data [filename]
+    poetry run python3 manage.py clear_database
+    
+
+
+Case Test:
+
+    poetry run python manage.py runserver
+    
+    Go to http://127.0.0.1:8000/energy/
+
+    poetry run python3 manage.py import_energy_data [filename]
+
+    Go to http://127.0.0.1:8000/energy/ or curl -X GET -H "Accept: application/json" http://127.0.0.1:8000/energy/
+    
+    Go to http://127.0.0.1:8000/energy/search?
+
+
+    curl -X POST -H "Content-Type: application/json" -d '{"name": "Biomass place 1", "type": "biomass", "capacity": "175", "location": "Location I", "status": "active"}' http://127.0.0.1:8000/new/
+    
+    http://127.0.0.1:8000/energy/
+
+    curl -X DELETE http://127.0.0.1:8000/close?eid=4c7a2745227fd92f5381d4dfce69468e5df1c348
+
+     http://127.0.0.1:8000/energy/
+
+    poetry run python3 manage.py clear_database
+
+

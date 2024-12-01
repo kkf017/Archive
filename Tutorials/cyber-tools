@@ -1,9 +1,0 @@
-
-git clone ssh://git@github.com/<user>/<repository name>.git
-
-
-arp -a 
-
-scapy
-iptable
-bettercap

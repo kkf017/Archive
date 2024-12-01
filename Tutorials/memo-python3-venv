@@ -1,4 +1,6 @@
-
+Ref.
+	https://www.freecodecamp.org/news/python-requirementstxt-explained/
+	
 sudo apt install python3-venv
 
 Then create a virtual environment in your project directory like this:
@@ -15,8 +17,4 @@ If you don't want to activate and deactivate virtual environments, you can run p
 $ .venv/bin/pip install requests
 $ .venv/bin/python
 >>> import requests
->>>
 
-
-
-https://www.freecodecamp.org/news/python-requirementstxt-explained/

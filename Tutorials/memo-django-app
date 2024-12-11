@@ -10,6 +10,11 @@ How to use Poetry ?
 	poetry init
     	poetry add Django
     		(...etc)
+    		
+    	pip install djangorestframework
+	pip install markdown       # Markdown support for the browsable API.
+	pip install django-filter
+	
 
 How to install django ?
     pip3 install Django
